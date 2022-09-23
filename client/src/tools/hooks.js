@@ -9,7 +9,7 @@ export const NavButton = ({ path = '/', text = "back" }) => {
     )
 }
 
-export const AuthRoute = ({ children, setCurrentUser }) => {
+export const AuthRoute = ({ children, setCurrentUser, currentUser }) => {
     const navigate = useNavigate()
 
     useEffect(() => {

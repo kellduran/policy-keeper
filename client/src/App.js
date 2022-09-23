@@ -3,13 +3,15 @@ import './App.css';
 import SignupForm from './SignupForm';
 import Home from './components/Home';
 import Login from './components/Login';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Root, NotFound } from './components/landings';
+import PolicyContainer from './components/PolicyContainer';
+import { AuthRoute } from './tools/hooks';
 
 
 
 function App() {
-  // const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   const [currentUser, setCurrentUser] = useState("");
 
   // useEffect(() => {
@@ -22,22 +24,35 @@ function App() {
 
 
   return (
+    // <Routes>
+    //   <Route index element={ <Root />} />
+    //   <Route path="/" element={ <Home /> } />
+    //   <Route path="signup" element={ <SignupForm setCurrentUser={ setCurrentUser } /> } />
+    //   <Route path="login" element={ <Login setCurrentUser={ setCurrentUser } /> } />
+    //   <Route path="policy" element={
+    //     <AuthRoute setCurrentUser={ setCurrentUser } currentUser={ currentUser }>
+    //       <PolicyContainer setCurrentUser= { setCurrentUser } currentUser={ currentUser}/>
+    //     </ AuthRoute>} />
+
+    //   <Route path="*" element={ <NotFound /> } />
+
+
+
+    // </Routes>
+    <>
+    <div className="App">
+      {/* <SignupForm setCurrentUser = {setCurrentUser}/> */}
+      {/* <Home /> */}
+    </div>
+    <BrowserRouter>
     <Routes>
-      <Route index element={ <AuthRoute setCurrentUser={ setCurrentUser } currentUser={ currentUser }><Home setCurrentUser= { setCurrentUser } currentUser={ currentUser}/></ AuthRoute>}/>
-      {/* <Route path="/" element={ <Home /> } /> */}
-      <Route path="signup" element={ <SignupForm setCurrentUser={ setCurrentUser } /> } />
-      <Route path="login" element={ <Login setCurrentUser={ setCurrentUser } /> } />
-      
-      <Route path="*" element={ <NotFound /> } />
-
-
-
+    <Route index element={ <Root />} />
+      <Route path="/" element={ <Home /> } />
+      <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser } /> } />
+      <Route path="/signup" element={ <SignupForm /> } />
     </Routes>
-    // <div className="App">
-    //   {/* <h1>Page Count: {count}</h1> */}
-    //   {/* <SignupForm setCurrentUser = {setCurrentUser}/> */}
-    //   {/* <Home /> */}
-    // </div>
+    </BrowserRouter>
+    </>
   );
 
 
