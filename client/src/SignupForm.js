@@ -35,7 +35,7 @@ const SignupForm = ({ setCurrentUser }) => {
           // maybe change this so that we are not setting state for current user here as we want them to validate their email first. So we want to redirect them to a page that asks them to check their email and then somehow redirect them to the login page where we set state for current user/auth/me
           {
             setCurrentUser(user)
-          });
+          }).then()
         } else {
           res.json().then((json) => 
             setErrors(json.errors)

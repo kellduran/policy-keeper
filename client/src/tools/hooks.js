@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 
 export const NavButton = ({ path = '/', text = "back" }) => {
     const navigate = useNavigate()
+    console.log(path)
 
     return(
         <button onClick={ () => navigate( path )}>{ text }</button>

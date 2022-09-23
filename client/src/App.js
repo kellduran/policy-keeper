@@ -40,16 +40,16 @@ function App() {
 
     // </Routes>
     <>
-    <div className="App">
+    {/* <div className="App">
       {/* <SignupForm setCurrentUser = {setCurrentUser}/> */}
       {/* <Home /> */}
-    </div>
+    {/* </div> */} 
     <BrowserRouter>
     <Routes>
-    <Route index element={ <Root />} />
       <Route path="/" element={ <Home /> } />
       <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser } /> } />
       <Route path="/signup" element={ <SignupForm /> } />
+      
     </Routes>
     </BrowserRouter>
     </>

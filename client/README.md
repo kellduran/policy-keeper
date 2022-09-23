@@ -1,4 +1,4 @@
-Policy Keeper
+Policy Keeper a small app originally conceived as a way to organize, explore, and display data (state level public policies in this instance). 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
