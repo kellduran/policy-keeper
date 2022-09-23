@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#Ignore initializers with email and pw for mailer
+/config/initializers/app_env_vars.rb

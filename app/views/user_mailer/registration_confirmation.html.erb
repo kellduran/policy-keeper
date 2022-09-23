@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Thank you for signing up with Policy Keeper!</p>
+ 
+    <p>User Name: <%= @user.user_name%>
+        To confirm your registration click the URL below.
+    </p>
+    <%= confirm_email_user_url(@user.confirmation_token) %>
+  </body>
+</html>
