@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import SignupForm from './SignupForm';
-import Home from './Home';
+import Home from './components/Home';
+import Login from './components/Login';
+import { Routes, Route } from 'react-router-dom';
+import { Root, NotFound } from './components/landings';
+
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const [currentUser, setCurrentUser] = useState("");
 
   // useEffect(() => {
@@ -14,24 +18,26 @@ function App() {
   //     .then((data) => setCount(data.count));
   // }, []);
 
-  // useEffect(() => {
-  //   fetch("/me").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => {
-  //         setCurrentUser(user);
-  //         console.log(currentUser.id)
-  //       });
-  //     }
-  //   });
-  // }, []);
+  
 
 
   return (
-    <div className="App">
-      {/* <h1>Page Count: {count}</h1> */}
-      <SignupForm setCurrentUser = {setCurrentUser}/>
-      <Home />
-    </div>
+    <Routes>
+      <Route index element={ <AuthRoute setCurrentUser={ setCurrentUser } currentUser={ currentUser }><Home setCurrentUser= { setCurrentUser } currentUser={ currentUser}/></ AuthRoute>}/>
+      {/* <Route path="/" element={ <Home /> } /> */}
+      <Route path="signup" element={ <SignupForm setCurrentUser={ setCurrentUser } /> } />
+      <Route path="login" element={ <Login setCurrentUser={ setCurrentUser } /> } />
+      
+      <Route path="*" element={ <NotFound /> } />
+
+
+
+    </Routes>
+    // <div className="App">
+    //   {/* <h1>Page Count: {count}</h1> */}
+    //   {/* <SignupForm setCurrentUser = {setCurrentUser}/> */}
+    //   {/* <Home /> */}
+    // </div>
   );
 
 

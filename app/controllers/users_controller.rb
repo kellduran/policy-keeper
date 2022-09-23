@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    
     def show
         if current_user
             render json: current_user, status: :ok
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     def confirm_email
         user = User.find_by(confirmation_token: params[:id])
         if user
-          user.update!(confirmation_token:"", email_validated:true)
-          redirect_to "/"
-        #   render json: "Welcome to Policy Keeper! Your email has been confirmed. Please sign in to continue."
+          user.update!(confirmation_token:"", email_validated: true)
+        #   redirect_to "/"
+          render json: "Welcome to Policy Keeper! Your email has been confirmed. Please sign in to continue."
         #     redirect_to "/login"
         else
           render json: "Sorry. This token is not active."
