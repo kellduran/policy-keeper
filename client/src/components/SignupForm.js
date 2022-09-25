@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = ({ setCurrentUser }) => {
     const [errors, setErrors] = useState([])
@@ -10,20 +11,24 @@ const SignupForm = ({ setCurrentUser }) => {
       email_validated: false,
       is_admin: false,
     });
-  
+    
+    
+
     const handleChange = (e) => {
       setFormData({
         ...formData,
         [e.target.name]: e.target.value,
-      });
+      })
     };
+
+    const navigate = useNavigate();
+
     function handleSubmit(e) {
       e.preventDefault();
-       
       
       const userCreds = { ...formData };
-    //   console.log("you clicked me", userCreds)
-      fetch("/users", {
+    //console.log("you clicked me", userCreds)
+    fetch("/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +40,8 @@ const SignupForm = ({ setCurrentUser }) => {
           // maybe change this so that we are not setting state for current user here as we want them to validate their email first. So we want to redirect them to a page that asks them to check their email and then somehow redirect them to the login page where we set state for current user/auth/me
           {
             setCurrentUser(user)
-          }).then()//reroute here to home
+          }).then(navigate('/'))
+          ;//reroute here to home
         } else {
           res.json().then((json) => 
             setErrors(json.errors)

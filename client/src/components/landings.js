@@ -5,8 +5,8 @@ export const Root = () => {
         <>
             <h1>root landing page</h1>
             <div>
-                <NavButton path=" /signup" text="sign up" />
-                <NavButton path=" /login" text="log in" />
+                <NavButton path="/signup" text="sign up" />
+                <NavButton path="/login" text="log in" />
             </div>
         </>
     )
