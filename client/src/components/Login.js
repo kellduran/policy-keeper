@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContainer from "./UserContainer";
+import { NavButton } from "../tools/hooks"
 
 function Login({ setCurrentUser, currentUser }){
     const [errors, setErrors] = useState([])
@@ -20,37 +21,39 @@ function Login({ setCurrentUser, currentUser }){
         })
       };
   
-        const navigate = useNavigate();
+      const navigate = useNavigate();
   
       function handleSubmit(e) {
         e.preventDefault();
         
         const userCreds = { ...formData };
-      //console.log("you clicked me", userCreds)
-      fetch("/login", {
+        //console.log("you clicked me", userCreds)
+        
+        fetch("/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(userCreds),
-        }).then((res) => {
-          if (res.ok) {
+          }).then((res) => {
+            if (res.ok) {
             res.json().then((user) => 
             {
               currentUser = setCurrentUser(user)
               console.log(user)
             }).then(navigate('/'));
           } else {
-            res.json().then((json) => 
-              setErrors(json.errors)
-            );
+            res.json().then((json) =>
+            setErrors(json.errors)
+            ).then(navigate('/'));
           }
-        });
+          })
       }
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+        <h2>Please Log In to Continue!</h2>
+        <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
           id="username-signup-input"
@@ -75,11 +78,11 @@ function Login({ setCurrentUser, currentUser }){
         />
         <button type="submit">Submit</button>
       </form>
-        <UserContainer currentUser={ currentUser }/>
+      <NavButton path="/" text="Home" />
         </div>
 
         
     );
 }
 
-export default Login
+export default Login;

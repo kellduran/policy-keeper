@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavButton } from "../tools/hooks";
 
-const SignupForm = ({ setCurrentUser }) => {
+const SignupForm = ({ currentUser, setCurrentUser }) => {
+    // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState([])
     
     const [formData, setFormData] = useState({
@@ -36,18 +38,16 @@ const SignupForm = ({ setCurrentUser }) => {
         body: JSON.stringify(userCreds),
       }).then((res) => {
         if (res.ok) {
-          res.json().then((user) => 
-          // maybe change this so that we are not setting state for current user here as we want them to validate their email first. So we want to redirect them to a page that asks them to check their email and then somehow redirect them to the login page where we set state for current user/auth/me
-          {
-            setCurrentUser(user)
-          }).then(navigate('/'))
-          ;//reroute here to home
-        } else {
+          res.json().then((user) =>{
+            currentUser = setCurrentUser(user)
+            navigate('/')})
+            .then(navigate('/'))
+          } else {
           res.json().then((json) => 
             setErrors(json.errors)
-          );
+          ).then(navigate('/'));
         }
-      }).then(e.target.reset());;
+      })
     }
   
     return (
@@ -85,7 +85,8 @@ const SignupForm = ({ setCurrentUser }) => {
         />
         <button type="submit">Submit</button>
       </form>
-       {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
+
+      <NavButton path="/" text="Home" />
        </>
     );
   };

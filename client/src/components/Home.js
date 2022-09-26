@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavButton} from "../tools/hooks";
+import { Logout, NavButton} from "../tools/hooks";
 
 function Home( ){
     const [showOtherButtons, setShowOtherButtons] = useState(false)
@@ -9,7 +9,7 @@ function Home( ){
           if (res.ok) {
             res.json().then((user) => {
                 setCurrentUser(user);
-                console.log(currentUser.id, "From Home");
+                console.log(user, "From Home");
                 setShowOtherButtons(true);
             });
           } else {
@@ -22,7 +22,7 @@ function Home( ){
 
     const loggedButtons =  (
         <div>
-        <NavButton path="/logout" text="Log Out" />
+        <Logout />
         <NavButton path="/user" text="My Page" />
         <NavButton path="/policy" text="Policies" />
         </div>

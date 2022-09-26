@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const NavButton = ({ path = '/', text = "back" }) => {
     const navigate = useNavigate()
@@ -31,4 +31,31 @@ export const AuthRoute = ({ children, setCurrentUser, currentUser }) => {
             {children}
         </>
     )
+}
+
+export const Logout = ( ) => {
+  const [errors, setErrors] = useState(null)
+  const [currentUser, setCurrentUser] = useState()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    fetch('/logout', {method: "DELETE"})
+    .then(res => {
+          if (!res.ok) {
+            throw Error('Error could not complete request')
+        }})
+        .catch(error => {
+          setErrors(error.message)
+        }).then(()=>{
+          navigate('/')
+          setCurrentUser("");
+        })
+  }
+
+  return(
+    <div>
+        <button onClick={handleLogout} currentUser={ currentUser }>Logout</button>
+        { errors && <div>{errors}</div>}  
+    </div>
+  )
 }
