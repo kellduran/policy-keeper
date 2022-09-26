@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import UserContainer from "./UserContainer";
 
 function Login({ setCurrentUser, currentUser }){
-    
     const [errors, setErrors] = useState([])
     
     const [formData, setFormData] = useState({
@@ -11,7 +10,7 @@ function Login({ setCurrentUser, currentUser }){
         password: "",
       });
       
-      
+   
   
     
       const handleChange = (e) => {
@@ -21,7 +20,7 @@ function Login({ setCurrentUser, currentUser }){
         })
       };
   
-        // const navigate = useNavigate();
+        const navigate = useNavigate();
   
       function handleSubmit(e) {
         e.preventDefault();
@@ -40,7 +39,7 @@ function Login({ setCurrentUser, currentUser }){
             {
               currentUser = setCurrentUser(user)
               console.log(user)
-            }).then(() =>{ <UserContainer currentUser={currentUser}/>});
+            }).then(navigate('/'));
           } else {
             res.json().then((json) => 
               setErrors(json.errors)
