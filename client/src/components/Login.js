@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContainer from "./UserContainer";
 
 function Login({ setCurrentUser, currentUser }){
     
@@ -20,7 +21,7 @@ function Login({ setCurrentUser, currentUser }){
         })
       };
   
-        const navigate = useNavigate();
+        // const navigate = useNavigate();
   
       function handleSubmit(e) {
         e.preventDefault();
@@ -37,15 +38,15 @@ function Login({ setCurrentUser, currentUser }){
           if (res.ok) {
             res.json().then((user) => 
             {
-              setCurrentUser(user)
+              currentUser = setCurrentUser(user)
               console.log(user)
-            }).then(navigate('/user'));
+            }).then(() =>{ <UserContainer currentUser={currentUser}/>});
           } else {
             res.json().then((json) => 
               setErrors(json.errors)
             );
           }
-        }).then(e.target.reset());;
+        });
       }
 
     return(
@@ -75,7 +76,10 @@ function Login({ setCurrentUser, currentUser }){
         />
         <button type="submit">Submit</button>
       </form>
+        <UserContainer currentUser={ currentUser }/>
         </div>
+
+        
     );
 }
 

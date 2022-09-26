@@ -18,7 +18,7 @@ export const AuthRoute = ({ children, setCurrentUser, currentUser }) => {
           if (res.ok) {
             res.json().then((user) => {
               setCurrentUser(user);
-              console.log(currentUser.id)
+              console.log(currentUser.id, "From AuthRoute")
             });
           } else {
             navigate('/login')

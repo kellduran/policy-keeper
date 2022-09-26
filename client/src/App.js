@@ -24,7 +24,7 @@ function App() {
         <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser }   currentUser={ currentUser } /> } />
         <Route path="/signup" element={ <SignupForm /> } />
         <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser}/></   AuthRoute>}/>
-        <Route path="/user" element= {<AuthRoute setCurrentUser={ setCurrentUser }  currentUser={ currentUser }>< UserContainer setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></ AuthRoute>}/>
+        <Route path="/user" element= {< UserContainer setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/>}/>
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </>
