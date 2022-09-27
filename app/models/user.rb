@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :policies, through: :favorites
 
- 
+  validates :user_name, uniqueness: true
+
   def confirm_token 
     if self.confirmation_token.blank?
         self.confirmation_token = SecureRandom.urlsafe_base64.to_s

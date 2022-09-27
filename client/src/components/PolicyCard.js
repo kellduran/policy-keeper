@@ -1,7 +1,7 @@
 import React from "react";
 
 function PolicyCard({ policy, currentUser }){
-    console.log(policy)
+    // console.log(policy)
     return(
         <>
         <div key={policy.id}>
