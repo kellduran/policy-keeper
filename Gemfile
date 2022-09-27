@@ -43,4 +43,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  
  # from me
 gem 'active_model_serializers', '~> 0.10.12' 
- 
+
+ gem 'faker', '~>2.23.0'

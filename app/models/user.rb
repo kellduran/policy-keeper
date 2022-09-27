@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     before_create :confirm_token
 
-  has_many :favortites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :policies, through: :favorites
 
  

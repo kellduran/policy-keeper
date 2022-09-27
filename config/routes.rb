@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :policies
   resources :favorites
+  resources :policies 
   resources :users do
     member do
       get :confirm_email
