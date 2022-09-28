@@ -37,7 +37,7 @@ function UserContainer ({setCurrentUser, currentUser }){
 
     })
 
-    
+    console.log(favoritePolicies)
    
 
     return (
@@ -53,7 +53,7 @@ function UserContainer ({setCurrentUser, currentUser }){
            <Link to={`/user/${id}`}>
            <button>Update My Information</button>
            </Link>
-           <Link to={"/user/done"}>
+           <Link to={"/done"}>
            <button>Delete My Account</button>
            </Link>
            <br/>
