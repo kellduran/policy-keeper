@@ -1,7 +1,12 @@
 import React from "react";
 
 function PolicyCard({ policy, currentUser }){
-    // console.log(policy)
+    console.log(currentUser, "PolicyCard")
+    const { id } = currentUser
+    console.log(id, "id from PolicyCard")
+
+    //create!favorite on this card with params filled in which is triggered by an onClick- consider adding validation so that you a user can't favorite the same policy 2x
+    
     return(
         <>
         <div key={policy.id}>

@@ -1,21 +1,25 @@
 import React, { useState, useEffect} from "react";
 import { NavButton} from "../tools/hooks";
-import FavoritePolicyCard from "./FavoritePolicyCard"
+import FavoritePolicyCard from "./FavoritePolicyCard";
+import { Link } from 'react-router-dom';
 
 
 function UserContainer ({setCurrentUser, currentUser }){
-    //useEffect fetch policies might need custom route want to get policies that are favorties of particular user to render here. finish setting up functionality after policy page and ability to favorite
+    
+    //update!user on this component: user_name; use PATCH
     const [favoritePolicies, setFavoritePolicies] = useState([])
-    console.log(currentUser)
+    
+
     console.log (currentUser.id, "userContainer currentUser.id")
     const { id } = currentUser
     console.log(id)
+    
     useEffect(() => {
         fetch(`/favorites/${id}`)
-          .then((r) => r.json())
-          .then((r)=>{
-            console.log(r, "from fetch usercontainer")
-            setFavoritePolicies(r)
+          .then((res) => res.json())
+          .then((res)=>{
+            console.log(res, "from favorites fetch usercontainer")
+            setFavoritePolicies(res)
             }
             );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,7 +37,7 @@ function UserContainer ({setCurrentUser, currentUser }){
 
     })
 
-
+    
    
 
     return (
@@ -45,6 +49,14 @@ function UserContainer ({setCurrentUser, currentUser }){
         <div>
            <h2>Username: {currentUser.user_name} </h2>
            <h2>Email: {currentUser.user_email} </h2>
+           <br/>
+           <Link to={`/user/${id}`}>
+           <button>Update My Information</button>
+           </Link>
+           <Link to={"/user/done"}>
+           <button>Delete My Account</button>
+           </Link>
+           <br/>
            <h2>Favorite Policies:</h2>
         </div>
         <br/>

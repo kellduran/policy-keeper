@@ -35,7 +35,6 @@ export const AuthRoute = ({ children, setCurrentUser, currentUser }) => {
 
 export const Logout = ( ) => {
   const [errors, setErrors] = useState(null)
-  const [currentUser, setCurrentUser] = useState()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -47,14 +46,13 @@ export const Logout = ( ) => {
         .catch(error => {
           setErrors(error.message)
         }).then(()=>{
-          navigate('/')
-          setCurrentUser("");
+          navigate('/');
         })
   }
 
   return(
     <div>
-        <button onClick={handleLogout} currentUser={ currentUser }>Logout</button>
+        <button onClick={handleLogout} >Logout</button>
         { errors && <div>{errors}</div>}  
     </div>
   )

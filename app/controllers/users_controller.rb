@@ -18,6 +18,18 @@ class UsersController < ApplicationController
         end
     end
 
+    def update
+        user = User.find(params[:id])
+        user.update!(user_params)
+        render json: user, status: :ok
+    end
+
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
+    end
+
     def confirm_email
         user = User.find_by(confirmation_token: params[:id])
         if user

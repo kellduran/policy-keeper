@@ -8,6 +8,8 @@ import SignupForm from './components/SignupForm';
 import Login from './components/Login';
 import UserContainer from './components/UserContainer.js';
 import PolicyContainer from './components/PolicyContainer';
+import UpdateUser from './components/UpdateUser';
+import DeleteUser from './components/DeleteUser';
 
 import './App.css';
 
@@ -20,11 +22,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={ <Home currentUser={ currentUser } setCurrentUser={ setCurrentUser }/> } />
+        <Route path="/" element={ <Home /> } />
         <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser }   currentUser={ currentUser } /> } />
         <Route path="/signup" element={ <SignupForm setCurrentUser={ setCurrentUser } currentUser={ currentUser }/> } />
-        <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser}/></   AuthRoute>}/>
-        <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< UserContainer setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></   AuthRoute>}/>
+        <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< UserContainer setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/user/:id" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/user/done" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </>

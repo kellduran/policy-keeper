@@ -2,9 +2,12 @@ import React from "react";
 
 function FavoritePolicyCard({ favpolicy, currentUser }){
     console.log(favpolicy)
+
+    //destroy!favorite on this card with remove button
+
     return(
         <>
-        <div key={favpolicy.id}>
+        <div key={favpolicy.law_citation}>
         <h2>State:{favpolicy.state}</h2>
         <h2>Law Citation: {favpolicy.law_citation} </h2>
         <h2>Title: {favpolicy.title} </h2>
