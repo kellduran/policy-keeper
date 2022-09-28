@@ -39,8 +39,8 @@ function Home( ){
     return(
         <div>
             <h1>Welcome to Policy Keeper!</h1>
-            <NavButton path="/signup" text="sign up" />
-            <NavButton path="/login" text="log in" />
+            <NavButton path="/signup" text="Sign Up" />
+            <NavButton path="/login" text="Login" />
             
             <NavButton path="/user" text="My Page" />
             <NavButton path="/policy" text="Policies" />

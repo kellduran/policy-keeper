@@ -20,7 +20,8 @@ class FavoritesController < ApplicationController
     end
 
     def destroy
-        #use update to make the current user_id " " which should remove the association between policy and user for a particular user but not effect other user's favoriting of same policy
+        find_favorite.destroy
+        head :no_content
     end
 
     private

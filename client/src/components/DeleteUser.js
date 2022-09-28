@@ -9,9 +9,8 @@ function DeleteUser({ currentUser, setCurrentUser }){
         fetch(`users/${id}`, {
           method: "DELETE",
        })
-         .then(
-            setCurrentUser("")   
-         ).then(navigate('/'));
+         .then(setCurrentUser(""))
+         .then(navigate('/'));
       }
 
     return(

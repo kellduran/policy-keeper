@@ -10,6 +10,7 @@ import UserContainer from './components/UserContainer.js';
 import PolicyContainer from './components/PolicyContainer';
 import UpdateUser from './components/UpdateUser';
 import DeleteUser from './components/DeleteUser';
+import DeleteFavorite from './components/DeleteFavorite';
 
 import './App.css';
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< UserContainer setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
         <Route path="/user/:id" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
         <Route path="/done" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteFavorite setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </>

@@ -29,7 +29,7 @@ function UserContainer ({setCurrentUser, currentUser }){
         console.log(favpolicy)
         return(
             <FavoritePolicyCard 
-            key = {favoritePolicies.id}
+            key = {favoritePolicies.law_citation}
             currentUser = { currentUser }
             favpolicy = { favpolicy }
             />
@@ -47,15 +47,17 @@ function UserContainer ({setCurrentUser, currentUser }){
          <NavButton path="/policy" text="Policies" />
         
         <div>
-           <h2>Username: {currentUser.user_name} </h2>
-           <h2>Email: {currentUser.user_email} </h2>
-           <br/>
-           <Link to={`/user/${id}`}>
-           <button>Update My Information</button>
-           </Link>
-           <Link to={"/done"}>
-           <button>Delete My Account</button>
-           </Link>
+            <div>
+                <h2>Username: {currentUser.user_name} </h2>
+                <h2>Email: {currentUser.user_email} </h2>
+                <br/>
+                <Link to={`/user/${id}`}>
+                <button>Update My Information</ button>
+                </Link>
+                <Link to={"/done"}>
+                <button>Delete My Account</ button>
+                </Link>
+           </div>
            <br/>
            <h2>Favorite Policies:</h2>
         </div>

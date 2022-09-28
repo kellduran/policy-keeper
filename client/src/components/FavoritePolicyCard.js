@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function FavoritePolicyCard({ favpolicy, currentUser }){
-    console.log(favpolicy)
-
-    //destroy!favorite on this card with remove button
+    const [policyDelete, setPolicyDelete] = useState({
+        policy_id: ``
+    })
+    console.log(favpolicy, "hello from favpolicycard")
+    const { id } = favpolicy.id
+ 
+    function handleClick(e){
+        console.log(e, "YouClicked")
+    }
 
     return(
         <>
         <div key={favpolicy.law_citation}>
-        <h2>State:{favpolicy.state}</h2>
+        <h2>State: {favpolicy.state}</h2>
         <h2>Law Citation: {favpolicy.law_citation} </h2>
         <h2>Title: {favpolicy.title} </h2>
         <h2>Title Description: {favpolicy.title_description} </h2>
@@ -17,8 +24,11 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
         <h2>Policy Type: {favpolicy.policy_type} </h2>
         <h2>Database Retrieved From: {favpolicy.database} </h2>
         <h2>Source: {favpolicy.source} </h2>
+       <br/>
+        <Link to={"/removepolicy"} policy_id={id}>
+        <button>Hey</button>
+        </ Link>
         </div>
-        <button>Remove</button> 
         </>
     )
 }
