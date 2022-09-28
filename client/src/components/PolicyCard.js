@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StyledDiv from "../styled-comps/BackgroundStyle";
+import StyledButton from "../styled-comps/StyledButton";
 
 function PolicyCard({ policy, currentUser }){
+
+    const navigate = useNavigate();
+    
+    const [errors, setErrors] = useState([])
+
     const [newFavorite, setNewFavorite] = useState({
         user_id: "",
         policy_id: ""
@@ -13,13 +20,37 @@ function PolicyCard({ policy, currentUser }){
     function handleClick(e){
         e.preventDefault();
 
-        console.log("ClickyClicky")
+        console.log("ClickyClicky", policy.id)
+        console.log("Me too!", currentUser.id)
 
-        // setNewFavorite({
-        //     user_id: `${id}`,
-        //     policy_id: `${policy.id}`
-        // });
-        // console.log(newFavorite, "consider me handled")
+        setNewFavorite({
+            ...newFavorite,
+            user_id: currentUser.id,
+            policy_id: policy.id,
+        })
+        
+
+        console.log(newFavorite, "consider me handled")
+
+        
+
+
+        fetch("/favorites", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newFavorite),
+          }).then((res) => {
+            if (res.ok) {
+              res.json()
+            .then(navigate('/user'))
+              } else {
+              res.json().then((json) => 
+                setErrors(json.errors)
+              ).then(navigate('/'));
+            }
+          })
     }
     
 
@@ -37,6 +68,7 @@ function PolicyCard({ policy, currentUser }){
         <h2>Policy Type: {policy.policy_type} </h2>
         <h2>Database Retrieved From: {policy.database} </h2>
         <h2>Source: {policy.source} </h2>
+        <StyledButton onClick={handleClick}>Keep!</StyledButton>
         </div>
         <br/>
         </>
