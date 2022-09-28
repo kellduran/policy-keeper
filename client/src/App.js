@@ -12,7 +12,8 @@ import UpdateUser from './components/UpdateUser';
 import DeleteUser from './components/DeleteUser';
 import DeleteFavorite from './components/DeleteFavorite';
 
-import './App.css';
+// import './App.css';
+import './index.css';
 
 
 function App() {

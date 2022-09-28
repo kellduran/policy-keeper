@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from "react";
-import { NavButton} from "../tools/hooks";
+import { NavButton } from "../tools/hooks";
 import FavoritePolicyCard from "./FavoritePolicyCard";
 import { Link } from 'react-router-dom';
+import StyledButton from "../styled-comps/StyledButton";
+import StyledDiv from "../styled-comps/BackgroundStyle";
 
 
 function UserContainer ({setCurrentUser, currentUser }){
@@ -43,26 +45,23 @@ function UserContainer ({setCurrentUser, currentUser }){
 
     return (
         <>
-         <NavButton path="/logout" text="Log Out" />
+        <div>
+        <h2>My Page</h2>
+         <NavButton path="/logout" text="Logout" />
          <NavButton path="/" text="Home" />
          <NavButton path="/policy" text="Policies" />
-        
-        <div>
-            <div>
+         </div>
+            <StyledDiv.UserBackground>
                 <h2>Username: {currentUser.user_name} </h2>
                 <h2>Email: {currentUser.user_email} </h2>
                 <br/>
                 <Link to={`/user/${id}`}>
-                <button>Update My Information</ button>
+                <StyledButton>Update My Information</ StyledButton>
                 </Link>
                 <Link to={"/done"}>
-                <button>Delete My Account</ button>
+                <StyledButton>Delete My Account</ StyledButton>
                 </Link>
-           </div>
-           <br/>
-           <h2>Favorite Policies:</h2>
-        </div>
-        <br/>
+           </StyledDiv.UserBackground>
         <div>
         {displayFavoritePolicies}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import StyledButton from "../styled-comps/StyledButton";
 
 function FavoritePolicyCard({ favpolicy, currentUser }){
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
     return(
         <>
         <div key={favpolicy.law_citation}>
+        <h2>Favorite Policies:</h2>
         <h2>State: {favpolicy.state}</h2>
         <h2>Law Citation: {favpolicy.law_citation} </h2>
         <h2>Title: {favpolicy.title} </h2>
@@ -33,7 +35,7 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
         <h2>Source: {favpolicy.source} </h2>
        <br/>
         {/* <Link to={"/removepolicy"} policy_id={id}> */}
-        <button onClick={ handleClick }>Remove Policy</button>
+        <StyledButton onClick={ handleClick }>Remove Policy</StyledButton>
         {/* </ Link> */}
         </div>
         </>

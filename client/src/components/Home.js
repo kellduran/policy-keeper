@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Logout, NavButton} from "../tools/hooks";
+import { BackgroundStyleHome } from "../styled-comps/BackgroundStyleHome";
 
 function Home( ){
     // const [showOtherButtons, setShowOtherButtons] = useState(false)
@@ -37,7 +38,7 @@ function Home( ){
     // )
 
     return(
-        <div>
+        <BackgroundStyleHome>
             <h1>Welcome to Policy Keeper!</h1>
             <NavButton path="/signup" text="Sign Up" />
             <NavButton path="/login" text="Login" />
@@ -46,7 +47,7 @@ function Home( ){
             <NavButton path="/policy" text="Policies" />
             <Logout />
             {/* {showOtherButtons ? loggedButtons : notLogged } */}
-        </div>
+        </BackgroundStyleHome>
     );
             
             

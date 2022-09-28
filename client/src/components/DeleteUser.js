@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
+import StyledButton from "../styled-comps/StyledButton";
+import StyledDiv from "../styled-comps/BackgroundStyle";
 
 function DeleteUser({ currentUser, setCurrentUser }){
     const { id } = currentUser
@@ -14,14 +16,19 @@ function DeleteUser({ currentUser, setCurrentUser }){
       }
 
     return(
-        <div>
+        <StyledDiv>
+            <div>
             <h2>Please Comfirm Deleting Your Account and Associated Data. There is no turning back...</h2>
-            <button onClick={ handleDelete }>DELETE</button>
+            </div>
+            <br/>
+            <StyledDiv>
+            <StyledButton.DeleteButton onClick={ handleDelete }>DELETE</StyledButton.DeleteButton>
             <br/>
             <Link to={'/'}>
-            <button>I've Changed My Mind</button>
+            <StyledButton>I've Changed My Mind</StyledButton>
             </Link>
-        </div>
+            </StyledDiv>
+        </StyledDiv>
     )
 }
 

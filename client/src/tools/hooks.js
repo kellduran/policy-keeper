@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import StyledButton from "../styled-comps/StyledButton";
+
 
 export const NavButton = ({ path = '/', text = "back" }) => {
     const navigate = useNavigate()
     console.log(path)
 
     return(
-        <button onClick={ () => navigate( path )}>{ text }</button>
+        <StyledButton onClick={ () => navigate( path )}>{ text }</StyledButton>
     )
 }
 
@@ -52,7 +54,7 @@ export const Logout = ( ) => {
 
   return(
     <div>
-        <button onClick={handleLogout} >Logout</button>
+        <StyledButton onClick={handleLogout} >Logout</StyledButton>
         { errors && <div>{errors}</div>}  
     </div>
   )
