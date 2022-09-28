@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContainer from "./UserContainer";
 import { NavButton } from "../tools/hooks"
+import theme from "../styled-comps/theme";
+import StyledButton from "../styled-comps/StyledButton";
+import StyledDiv from "../styled-comps/BackgroundStyle";
 
 function Login({ setCurrentUser, currentUser }){
     const [errors, setErrors] = useState([])
@@ -51,10 +54,10 @@ function Login({ setCurrentUser, currentUser }){
       }
 
     return(
-        <div>
-        <h2>Please Log In to Continue!</h2>
+        <StyledDiv.UserBackground>
+        <h2 style={{color: theme.bone}}>Please Log In to Continue!</h2>
         <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label style={{color: theme.bone }}htmlFor="username">Username: </label>
         <input
           id="username-signup-input"
           type="text"
@@ -62,7 +65,7 @@ function Login({ setCurrentUser, currentUser }){
           value={formData.user_name}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password:</label>
+        <label style={{color: theme.bone }}htmlFor="password">Password: </label>
         <input
           id="password-signup-input"
           type="password"
@@ -70,16 +73,16 @@ function Login({ setCurrentUser, currentUser }){
           value={formData.password}
           onChange={handleChange}
         />
-        <label htmlFor="confirm-password">Confirm Password:</label>
+        <label style={{color: theme.bone }}htmlFor="confirm-password">Confirm Password: </label>
         <input
           id="confirm-password-signup-input"
           type="password"
           name="confirm-password"
         />
-        <button type="submit">Submit</button>
+        <StyledButton type="submit">Submit</StyledButton>
       </form>
       <NavButton path="/" text="Home" />
-        </div>
+        </StyledDiv.UserBackground>
 
         
     );

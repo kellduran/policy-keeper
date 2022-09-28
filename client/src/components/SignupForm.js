@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavButton } from "../tools/hooks";
+import theme from "../styled-comps/theme";
+import StyledButton from "../styled-comps/StyledButton";
+import StyledDiv from "../styled-comps/BackgroundStyle";
+
+
 
 const SignupForm = ({ currentUser, setCurrentUser }) => {
     // eslint-disable-next-line no-unused-vars
@@ -52,8 +57,11 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
   
     return (
       <>
+      <StyledDiv.UserBackground>
+      <h2 style={{color: theme.bone }}>Please Sign Up!</h2>
+      <br/>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label style={{color: theme.bone }}htmlFor="username">Username:</label>
         <input
           id="username-signup-input"
           type="text"
@@ -61,7 +69,7 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
           value={formData.user_name}
           onChange={handleChange}
         />
-        <label htmlFor="email">Email:</label>
+        <label style={{color: theme.bone }} htmlFor="email">Email:</label>
         <input
           id="email-signup-input"
           type="text"
@@ -69,7 +77,7 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
           value={formData.user_email}
           onChange={handleChange}
         />
-        <label htmlFor="password">Password:</label>
+        <label style={{color: theme.bone }}htmlFor="password">Password:</label>
         <input
           id="password-signup-input"
           type="password"
@@ -77,16 +85,17 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
           value={formData.password}
           onChange={handleChange}
         />
-        <label htmlFor="confirm-password">Confirm Password:</label>
+        <label style={{color: theme.bone }}htmlFor="confirm-password">Confirm Password:</label>
         <input
           id="confirm-password-signup-input"
           type="password"
           name="confirm-password"
         />
-        <button type="submit">Submit</button>
+        <StyledButton type="submit">Submit</StyledButton>
       </form>
 
       <NavButton path="/" text="Home" />
+      </StyledDiv.UserBackground>
        </>
     );
   };

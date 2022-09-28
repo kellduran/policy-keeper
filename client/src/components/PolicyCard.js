@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import StyledDiv from "../styled-comps/BackgroundStyle";
 
 function PolicyCard({ policy, currentUser }){
     const [newFavorite, setNewFavorite] = useState({
@@ -7,7 +8,7 @@ function PolicyCard({ policy, currentUser }){
     })
 
     const { id } = currentUser
-    console.log(id, "id from PolicyCard")
+    // console.log(id, "id from PolicyCard")
     
     function handleClick(e){
         e.preventDefault();
@@ -26,7 +27,7 @@ function PolicyCard({ policy, currentUser }){
 
     return(
         <>
-        <div key={policy.id}>
+        <div  key={policy.id}>
         <h2>State: {policy.state}</h2>
         <h2>Law Citation: {policy.law_citation} </h2>
         <h2>Title: {policy.title} </h2>
@@ -37,6 +38,7 @@ function PolicyCard({ policy, currentUser }){
         <h2>Database Retrieved From: {policy.database} </h2>
         <h2>Source: {policy.source} </h2>
         </div>
+        <br/>
         </>
     )
 }

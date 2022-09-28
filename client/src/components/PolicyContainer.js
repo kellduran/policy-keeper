@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavButton } from "../tools/hooks";
 import PolicyCard from "./PolicyCard";
+import StyledDiv from "../styled-comps/BackgroundStyle";
 
 function PolicyContainer({ currentUser }){
     console.log(currentUser)
@@ -23,14 +24,18 @@ function PolicyContainer({ currentUser }){
     })
     return(
         <>
+        <div>
         <NavButton path="/logout" text="Log Out" />
         <NavButton path="/" text="Home" />
         <NavButton path="/user" text="My Page" />
-        <div>
+        </div>
+        <StyledDiv.UserBackground>
             <h1>Policies Page</h1>
             <h2>State Level Opioid Prescribing Policies</h2>  
-        </div>
+        </StyledDiv.UserBackground>
+        <StyledDiv.PolicyBackground>
         {displayPolicies}
+        </StyledDiv.PolicyBackground>
         </>
     )
 }

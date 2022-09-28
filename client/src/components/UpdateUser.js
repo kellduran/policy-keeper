@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
+import theme from "../styled-comps/theme";
+import StyledButton from "../styled-comps/StyledButton"
+import StyledDiv from "../styled-comps/BackgroundStyle"
 
 function UpdateUser({ currentUser, setCurrentUser }){
     const [formData, setFormData] = useState({
@@ -38,8 +40,9 @@ function UpdateUser({ currentUser, setCurrentUser }){
     
     return(
         <>
+        <StyledDiv.UserBackground>
         <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Update Username:</label>
+        <label style={{color: theme.bone }}htmlFor="username">Update Username: </label>
         <input
           id="username-signup-input"
           type="text"
@@ -47,8 +50,12 @@ function UpdateUser({ currentUser, setCurrentUser }){
           value={formData.user_name}
           onChange={handleChange}
         />
-        <button>Update</button>
+        <StyledButton>Update</StyledButton>
         </form>
+        <Link to={'/'}>
+            <StyledButton>I've Changed My Mind</StyledButton>
+        </Link>
+        </StyledDiv.UserBackground>
         </>
     )
 }

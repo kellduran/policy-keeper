@@ -16,5 +16,11 @@ align-items: center;
 justify-content: center;
 background-color: ${theme.berry};
 `
+const PolicyBackground = styled.div`
+text-align: center; 
+background-color: ${theme.bone};
+border-top: 2px solid black;
+`
 BackgroundStyle.UserBackground = UserBackground
+BackgroundStyle.PolicyBackground = PolicyBackground
 export default BackgroundStyle
