@@ -11,7 +11,7 @@ function DeleteFavorite({ currentUser, setCurrentUser, favpolicy }){
     //    }).then(navigate('/user'));
     //   }
 
-      console.log( "hello from deleteFavorite")      
+      console.log("hello from deleteFavorite")      
     
       return(
         <div>

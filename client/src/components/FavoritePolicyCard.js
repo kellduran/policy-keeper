@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function FavoritePolicyCard({ favpolicy, currentUser }){
+    const navigate = useNavigate();
+    console.log(currentUser)
     const [policyDelete, setPolicyDelete] = useState({
         policy_id: ``
     })
     console.log(favpolicy, "hello from favpolicycard")
-    const { id } = favpolicy.id
+    // const { id } = favpolicy.id
  
     function handleClick(e){
-        console.log(e, "YouClicked")
+        console.log(favpolicy, "YouClicked")
+        
+        console.log(favpolicy.id, "inside handleClick ID")
+        fetch(`favorites/${favpolicy.id}`, {
+            method: "DELETE",
+         }).then(navigate('/'));
     }
 
     return(
@@ -25,9 +32,9 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
         <h2>Database Retrieved From: {favpolicy.database} </h2>
         <h2>Source: {favpolicy.source} </h2>
        <br/>
-        <Link to={"/removepolicy"} policy_id={id}>
-        <button>Hey</button>
-        </ Link>
+        {/* <Link to={"/removepolicy"} policy_id={id}> */}
+        <button onClick={ handleClick }>Remove Policy</button>
+        {/* </ Link> */}
         </div>
         </>
     )

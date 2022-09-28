@@ -32,6 +32,7 @@ function UserContainer ({setCurrentUser, currentUser }){
             key = {favoritePolicies.law_citation}
             currentUser = { currentUser }
             favpolicy = { favpolicy }
+            id = {favpolicy.id}
             />
         )
 
