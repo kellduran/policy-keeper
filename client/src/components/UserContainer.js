@@ -48,7 +48,7 @@ function UserContainer ({setCurrentUser, currentUser }){
         <>
         <div>
         <h1 style={{color: theme.bone }}>My Page</h1>
-         <NavButton path="/logout" text="Logout" />
+         {/* <NavButton path="/logout" text="Logout" /> */}
          <NavButton path="/" text="Home" />
          <NavButton path="/policy" text="Policies" />
          </div>
