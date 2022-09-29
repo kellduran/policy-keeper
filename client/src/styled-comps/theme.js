@@ -1,4 +1,4 @@
-const bone = "#EAE2D6";
+const bone = "#eae2d6";
 const space = "#2F3061";
 const berry = "#66293C"; 
 const sea = "#48A9A6";

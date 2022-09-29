@@ -5,7 +5,7 @@ import StyledButton from "../styled-comps/StyledButton";
 
 export const NavButton = ({ path = '/', text = "back" }) => {
     const navigate = useNavigate()
-    console.log(path)
+    
 
     return(
         <StyledButton onClick={ () => navigate( path )}>{ text }</StyledButton>

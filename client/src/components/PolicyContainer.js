@@ -12,11 +12,14 @@ function PolicyContainer({ currentUser }){
           .then((r) => r.json())
           .then((r)=>setShowPolicies(r));
     }, []);
+    
+    console.log(showPolicies)
+    console.log("policy Contianer")
 
     const displayPolicies = showPolicies.map((policy) => {
         return(
             <PolicyCard 
-            key = {showPolicies.id}
+            key = {policy.id}
             currentUser = { currentUser }
             policy = { policy }
             />

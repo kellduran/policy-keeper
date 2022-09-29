@@ -8,6 +8,14 @@ class UsersController < ApplicationController
         end
     end
 
+    def me
+        if current_user
+            render json: current_user, status: :ok
+        else
+            render json: {error: "No current session strored"}, status: :unauthorized
+        end
+    end
+
     def create 
         @user = User.new(user_params)
          if @user.save

@@ -9,7 +9,7 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
     const [policyDelete, setPolicyDelete] = useState({
         policy_id: ``
     })
-    console.log(favpolicy, "hello from favpolicycard")
+    // console.log(favpolicy, "hello from favpolicycard")
     // const { id } = favpolicy.id
  
     function handleClick(e){

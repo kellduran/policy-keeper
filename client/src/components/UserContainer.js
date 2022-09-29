@@ -9,7 +9,7 @@ import theme from "../styled-comps/theme";
 
 function UserContainer ({setCurrentUser, currentUser }){
     
-    //update!user on this component: user_name; use PATCH
+    
     const [favoritePolicies, setFavoritePolicies] = useState([])
     
 

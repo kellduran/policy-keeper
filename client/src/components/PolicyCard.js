@@ -24,10 +24,10 @@ function PolicyCard({ policy, currentUser }){
         console.log("Me too!", currentUser.id)
 
         setNewFavorite({
-            ...newFavorite,
             user_id: currentUser.id,
-            policy_id: policy.id,
-        })
+            policy_id: policy.id, 
+            
+    })
         
 
         console.log(newFavorite, "consider me handled")
