@@ -1,20 +1,16 @@
 class UsersController < ApplicationController
+   skip_before_action :authenticate_user, only: [:show, :create, :confirm_email]
     
+   
     def show
-        if current_user
-            render json: current_user, status: :ok
+    render json: current_user, status: :ok
+    if current_user
         else
             render json: {error: "No current session strored"}, status: :unauthorized
         end
     end
 
-    def me
-        if current_user
-            render json: current_user, status: :ok
-        else
-            render json: {error: "No current session strored"}, status: :unauthorized
-        end
-    end
+   
 
     def create 
         @user = User.new(user_params)
@@ -53,7 +49,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:user_email, :user_name, :password, :password_digest, :user, :email_validated
+        params.require(:user).permit(:user_email, :user_name, :password, :password_digest, :email_validated, :is_admin
         )
     end
 end

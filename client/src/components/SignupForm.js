@@ -33,7 +33,7 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
     function handleSubmit(e) {
       e.preventDefault();
       
-      const userCreds = { ...formData };
+      const userCreds = { user: {...formData} };
     //console.log("you clicked me", userCreds)
     fetch("/users", {
         method: "POST",

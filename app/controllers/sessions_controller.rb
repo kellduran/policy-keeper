@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_action :authenticate_user, only: [:destroy]
+ skip_before_action :authenticate_user, only: [:create]
 
   #POST '/login'
   def create

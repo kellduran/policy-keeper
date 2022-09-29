@@ -9,10 +9,10 @@ function PolicyCard({ policy, currentUser }){
     
     const [errors, setErrors] = useState([])
 
-    const [newFavorite, setNewFavorite] = useState({
-        user_id: "",
-        policy_id: ""
-    })
+//     const [newFavorite, setNewFavorite] = useState({
+//         user_id: "",
+//         policy_id: ""
+// })
 
     const { id } = currentUser
     // console.log(id, "id from PolicyCard")
@@ -23,14 +23,14 @@ function PolicyCard({ policy, currentUser }){
         console.log("ClickyClicky", policy.id)
         console.log("Me too!", currentUser.id)
 
-        setNewFavorite({
-            user_id: currentUser.id,
-            policy_id: policy.id, 
+    //     setNewFavorite({
+    //         user_id: currentUser.id,
+    //         policy_id: policy.id, 
             
-    })
-        
+    // })
+      const favoriteBody={favorite:{user_id:currentUser.id, policy_id:policy.id}} 
 
-        console.log(newFavorite, "consider me handled")
+        console.log(favoriteBody, "consider me handled")
 
         
 
@@ -40,7 +40,7 @@ function PolicyCard({ policy, currentUser }){
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(newFavorite),
+            body: JSON.stringify(favoriteBody),
           }).then((res) => {
             if (res.ok) {
               res.json()
