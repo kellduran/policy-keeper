@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Logout, NavButton} from "../tools/hooks";
 import { BackgroundStyleHome } from "../styled-comps/BackgroundStyleHome";
 

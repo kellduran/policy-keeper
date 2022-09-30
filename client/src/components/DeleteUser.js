@@ -24,7 +24,7 @@ function DeleteUser({ currentUser, setCurrentUser }){
             <StyledDiv>
             <StyledButton.DeleteButton onClick={ handleDelete }>DELETE</StyledButton.DeleteButton>
             <br/>
-            <Link to={'/'}>
+            <Link to={'/user'}>
             <StyledButton>I've Changed My Mind</StyledButton>
             </Link>
             </StyledDiv>

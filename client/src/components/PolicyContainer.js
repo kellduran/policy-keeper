@@ -28,7 +28,6 @@ function PolicyContainer({ currentUser }){
     return(
         <>
         <div>
-        <NavButton path="/logout" text="Log Out" />
         <NavButton path="/" text="Home" />
         <NavButton path="/user" text="My Page" />
         </div>

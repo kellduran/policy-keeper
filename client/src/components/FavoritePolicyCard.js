@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+// import { useNavigate } from "react-router-dom";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 
-function FavoritePolicyCard({ favpolicy, currentUser }){
-    const navigate = useNavigate();
-    console.log(currentUser)
-    const [policyDelete, setPolicyDelete] = useState({
-        policy_id: ``
-    })
+function FavoritePolicyCard({ favpolicy, currentUser, handleDeleteClick }){
+    // const navigate = useNavigate();
+    
+
+    // const [favoritePolicies, setFavoritePolicies] = useState([])
+   
     // console.log(favpolicy, "hello from favpolicycard")
     // const { id } = favpolicy.id
  
@@ -18,8 +18,16 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
         console.log(favpolicy.id, "inside handleClick ID")
         fetch(`favorites/${favpolicy.id}`, {
             method: "DELETE",
-         }).then(navigate('/'));
+         }).then(handleDeleteClick(favpolicy.id));
     }
+
+
+    //moved to userContainer so that could pass updated favpolicy
+    // function handleDeleteClick(deletedFavPolicy){
+    //     console.log(deletedFavPolicy)
+    //     const updatedFavoritePolicies = favoritePolicies.filter((policy) => policy.id !== deletedFavPolicy.id)
+    //     setFavoritePolicies(updatedFavoritePolicies)
+    //   }
 
     return(
         <>
@@ -35,7 +43,7 @@ function FavoritePolicyCard({ favpolicy, currentUser }){
         <h2>Database Retrieved From: {favpolicy.database} </h2>
         <h2>Source: {favpolicy.source} </h2>
        <br/>
-        {/* <Link to={"/removepolicy"} policy_id={id}> */}
+        {/* <Link to={"/removepolicy"} > */}
         <StyledButton onClick={ handleClick }>Remove Policy</StyledButton>
         {/* </ Link> */}
         </StyledDiv>

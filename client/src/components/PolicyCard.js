@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import StyledDiv from "../styled-comps/BackgroundStyle";
 import StyledButton from "../styled-comps/StyledButton";
 
 function PolicyCard({ policy, currentUser }){
@@ -9,49 +8,40 @@ function PolicyCard({ policy, currentUser }){
     
     const [errors, setErrors] = useState([])
 
-//     const [newFavorite, setNewFavorite] = useState({
-//         user_id: "",
-//         policy_id: ""
-// })
 
-    const { id } = currentUser
-    // console.log(id, "id from PolicyCard")
     
     function handleClick(e){
-        e.preventDefault();
+      e.preventDefault();
 
-        console.log("ClickyClicky", policy.id)
-        console.log("Me too!", currentUser.id)
+      console.log("ClickyClicky", policy.id)
+      console.log("Me too!", currentUser.id)
 
-    //     setNewFavorite({
-    //         user_id: currentUser.id,
-    //         policy_id: policy.id, 
-            
-    // })
+
       const favoriteBody={favorite:{user_id:currentUser.id, policy_id:policy.id}} 
 
-        console.log(favoriteBody, "consider me handled")
+      console.log(favoriteBody, "consider me handled")
 
         
 
 
-        fetch("/favorites", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(favoriteBody),
-          }).then((res) => {
-            if (res.ok) {
-              res.json()
-            .then(navigate('/user'))
-              } else {
-              res.json().then((json) => 
-                setErrors(json.errors)
-              ).then(navigate('/'));
-            }
-          })
-    }
+      fetch("/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(favoriteBody),
+        })
+        .then((res) => {
+          if (res.ok) {
+            res.json()
+          .then(navigate('/user'))
+          } else {
+            res.json()
+            .then((json) => setErrors(json.errors))
+            .then(navigate('/'));
+          }
+        })
+  }
     
 
     //create!favorite on this card with params filled in which is triggered by an onClick- consider adding validation so that you a user can't favorite the same policy 2x

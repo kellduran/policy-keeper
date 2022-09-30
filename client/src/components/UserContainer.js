@@ -28,6 +28,13 @@ function UserContainer ({setCurrentUser, currentUser }){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    function handleDeleteClick(deletedFavPolicy){
+        console.log(deletedFavPolicy, "Inside handleDeleteClick")
+        const updatedFavoritePolicies = favoritePolicies.filter((policy) => policy.id !== deletedFavPolicy.id)
+        setFavoritePolicies(updatedFavoritePolicies)
+        console.log(favoritePolicies, "Inside handleDeleteClick filter")
+      }
+
     const displayFavoritePolicies = favoritePolicies.map((favpolicy)=> {
         console.log(favpolicy)
         return(
@@ -36,6 +43,7 @@ function UserContainer ({setCurrentUser, currentUser }){
             currentUser = { currentUser }
             favpolicy = { favpolicy }
             id = {favpolicy.id}
+            handleDeleteClick = {handleDeleteClick}
             />
         )
 

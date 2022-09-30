@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UserContainer from "./UserContainer";
 import { NavButton } from "../tools/hooks"
 import theme from "../styled-comps/theme";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 
 function Login({ setCurrentUser, currentUser }){
+    // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState([])
     
     const [formData, setFormData] = useState({

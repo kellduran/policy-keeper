@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function DeleteFavorite({ currentUser, setCurrentUser, favpolicy }){
     // const { id } = favpolicy
@@ -11,7 +11,7 @@ function DeleteFavorite({ currentUser, setCurrentUser, favpolicy }){
     //    }).then(navigate('/user'));
     //   }
 
-      console.log("hello from deleteFavorite")      
+    //   console.log("hello from deleteFavorite")      
     
       return(
         <div>
