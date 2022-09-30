@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
-   skip_before_action :authenticate_user, only: [:show, :create, :confirm_email]
+   skip_before_action :authenticate_user, only: [:create, :confirm_email]
     
    
     def show
-    render json: current_user, status: :ok
-    if current_user
-        else
-            render json: {error: "No current session strored"}, status: :unauthorized
-        end
+        render json: current_user, status: :ok
     end
 
    

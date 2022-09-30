@@ -12,6 +12,9 @@ class ApplicationController < ActionController::API
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
+    # puts "CURRENT USER METHOD"
+    # puts @current_user
+    # return @current_user
   end
 
 

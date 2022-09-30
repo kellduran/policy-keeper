@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route} from 'react-router-dom';
 import { NotFound } from './components/landings';
 import { AuthRoute } from './tools/hooks';
@@ -20,6 +20,18 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState("");
   
+  useEffect(() => {
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setCurrentUser(user);
+          console.log(currentUser.id, "From App")
+        });
+      }
+    })
+  }, [])
+
+
 
   return (
     <>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavButton } from "../tools/hooks";
-import PolicyCard from "./PolicyCard";
+
 import StyledDiv from "../styled-comps/BackgroundStyle";
+import Search from "./Search";
+import PolicyList from "./PolicyList";
 
 function PolicyContainer({ currentUser }){
     console.log(currentUser)
@@ -16,15 +18,26 @@ function PolicyContainer({ currentUser }){
     console.log(showPolicies)
     console.log("policy Contianer")
 
-    const displayPolicies = showPolicies.map((policy) => {
-        return(
-            <PolicyCard 
-            key = {policy.id}
-            currentUser = { currentUser }
-            policy = { policy }
-            />
-        )
+    const [ searchString, setSearchString ] = useState('')
+
+    const changeSearchString = newString => {
+      setSearchString ( newString )
+    }
+  
+    const filteredPolices = showPolicies.filter((policy)=>{
+      return policy.title.toLowerCase().includes( searchString.toLowerCase() )
     })
+
+
+    // const displayPolicies = showPolicies.map((policy) => {
+    //     return(
+    //         <PolicyCard 
+    //         key = {policy.id}
+    //         currentUser = { currentUser }
+    //         policy = { policy }
+    //         />
+    //     )
+    // })
     return(
         <>
         <div>
@@ -36,7 +49,9 @@ function PolicyContainer({ currentUser }){
             <h2>State Level Opioid Prescribing Policies</h2>  
         </StyledDiv.UserBackground>
         <StyledDiv.PolicyBackground>
-        {displayPolicies}
+            <Search changeSearchString={ changeSearchString }/>
+            <PolicyList filteredPolicies={ filteredPolices } currentUser= { currentUser }/>
+        {/* {displayPolicies} */}
         </StyledDiv.PolicyBackground>
         </>
     )
