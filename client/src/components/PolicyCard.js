@@ -6,6 +6,7 @@ function PolicyCard({ policy, currentUser }){
 
     const navigate = useNavigate();
     
+    // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState([])
 
 

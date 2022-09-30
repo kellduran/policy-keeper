@@ -13,9 +13,9 @@ function UserContainer ({setCurrentUser, currentUser }){
     const [favoritePolicies, setFavoritePolicies] = useState([])
     
 
-    console.log (currentUser.id, "userContainer currentUser.id")
+    // console.log (currentUser.id, "userContainer currentUser.id")
     const { id } = currentUser
-    console.log(id)
+    // console.log(id)
     
     useEffect(() => {
         fetch(`/favorites/${id}`)
