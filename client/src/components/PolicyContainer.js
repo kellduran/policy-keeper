@@ -25,7 +25,13 @@ function PolicyContainer({ currentUser }){
     }
   
     const filteredPolices = showPolicies.filter((policy)=>{
-      return policy.title.toLowerCase().includes( searchString.toLowerCase() )
+      return policy.title.toLowerCase().includes( searchString.toLowerCase() ) ||
+            policy.summary.toLowerCase().includes( searchString.toLowerCase() ) ||
+            policy.title_description.toLowerCase().includes( searchString.toLowerCase() ) ||
+            policy.law_citation.toLowerCase().includes( searchString.toLowerCase() ) ||
+            policy.policy_type.toLowerCase().includes( searchString.toLowerCase() ) ||
+            policy.state.toLowerCase().includes( searchString.toLowerCase() )
+
     })
 
 
