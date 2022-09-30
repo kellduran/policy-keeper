@@ -1,6 +1,5 @@
 class PoliciesController < ApplicationController
-    before_action :authenticate_user
-
+  
     def index 
         render json: Policy.all, status: :ok
     end

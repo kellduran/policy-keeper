@@ -14,7 +14,7 @@ export const NavButton = ({ path = '/', text = "back" }) => {
 
 export const AuthRoute = ({ children, setCurrentUser, currentUser }) => {
     const navigate = useNavigate()
-
+    console.log(children, "CHILDREN FROM AUTHROUTE")
     useEffect(() => {
         fetch("/me").then((res) => {
           if (res.ok) {
