@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { NavButton } from "../tools/hooks";
-
+import { useNavigate } from "react-router-dom";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import Search from "./Search";
 import PolicyList from "./PolicyList";
 
-function PolicyContainer({ currentUser }){
+function PolicyContainer({ currentUser, setCurrentUser }){
     console.log(currentUser)
     const [showPolicies, setShowPolicies] = useState([])
-    
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!currentUser){
+            console.log("not seeing currentUser")
+            fetch("/me").then((res) => {
+                if (res.ok) {
+                  res.json().then((user) => {
+                    setCurrentUser(user);
+                    console.log(currentUser.id, "From PolicyContainer")
+                }).then(getPolicies);
+                } else {
+              navigate('/login')
+                }})
+        } 
+
+    }, [])
+        
+    const getPolicies = 
     useEffect(() => {
         fetch("/policies")
           .then((r) => r.json())
