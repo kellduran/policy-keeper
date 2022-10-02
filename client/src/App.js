@@ -37,18 +37,21 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={ <Home /> } />
-        <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser }   currentUser={ currentUser } /> } />
-        <Route path="/signup" element={ <SignupForm setCurrentUser={ setCurrentUser } currentUser={ currentUser }/> } />
-        <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
 
+        <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser }   currentUser={ currentUser } /> } />
+
+        <Route path="/signup" element={ <SignupForm setCurrentUser={ setCurrentUser } currentUser={ currentUser }/> } />
+
+        <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
 
       { currentUser && <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser }>< UserContainer currentUser={ currentUser}/></AuthRoute>}/>}
 
-
-        <Route path="/user/:id" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/user/:id" element= {<AuthRoute setCurrentUser={   setCurrentUser } >< UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
 
         <Route path="/done" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
-        <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteFavorite setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+
+        {currentUser && <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={   setCurrentUser } >< DeleteFavorite /></AuthRoute>}/>}
+
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </>

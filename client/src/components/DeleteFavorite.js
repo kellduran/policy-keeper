@@ -1,22 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function DeleteFavorite({ currentUser, setCurrentUser, favpolicy }){
+function DeleteFavorite({ currentUser,  favpolicy, handleDeleteClick, favPolicyRealID }){
     // const { id } = favpolicy
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // function handleDelete(){
-    //     fetch(`favorite/${id}`, {
+    //     fetch(`favorite/${favPolicyRealID}`, {
     //       method: "DELETE",
     //    }).then(navigate('/user'));
     //   }
-
-    //   console.log("hello from deleteFavorite")      
+      console.log(favpolicy,"DeleteFav-favpolicy object")  
+      console.log(favPolicyRealID, " deleteFavorite, favPolicyRealID")  
+      console.log(currentUser, "DeleteFav")  
+      console.log(handleDeleteClick, "DeleteFav")
+    
+    function handleClick(e){
+        console.log(favpolicy, "YouClicked")
+        
+        console.log(favPolicyRealID, "inside handleClick ID")
+        // fetch(`favorites/${favpolicy.id}`, {
+        //     method: "DELETE",
+        //  }).then(handleDeleteClick(favpolicy.id))
+        //  .then(navigate("/user"));
+    }
     
       return(
         <div>
             <h2>Please Comfirm Removing Policy.</h2>
-            <button >Done with This One</button>
+            <button onClick={ handleClick }>Done with This One</button>
             <br/>
             <Link to={'/'}>
             <button>I've Changed My Mind</button>
