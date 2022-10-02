@@ -17,7 +17,6 @@ function PolicyContainer({ currentUser, setCurrentUser }){
                 if (res.ok) {
                   res.json().then((user) => {
                     setCurrentUser(user);
-                    console.log(currentUser.id, "From PolicyContainer")
                 }).then(getPolicies);
                 } else {
               navigate('/login')

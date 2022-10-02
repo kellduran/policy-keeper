@@ -7,7 +7,8 @@ import StyledDiv from "../styled-comps/BackgroundStyle";
 import theme from "../styled-comps/theme";
 
 
-function UserContainer ({setCurrentUser, currentUser }){
+
+function UserContainer ({ currentUser }){
     
     
     const [favoritePolicies, setFavoritePolicies] = useState([])
@@ -18,6 +19,7 @@ function UserContainer ({setCurrentUser, currentUser }){
     // console.log(id)
     
     useEffect(() => {
+    
         fetch(`/favorites/${id}`)
           .then((res) => res.json())
           .then((res)=>{
@@ -26,7 +28,17 @@ function UserContainer ({setCurrentUser, currentUser }){
             }
             );
     // eslint-disable-next-line react-hooks/exhaustive-deps
+        
     }, []);
+
+    // if(!currentUser)
+    // {
+    //     return(
+    //     <div>
+    //         Loading...
+    //     </div>
+    //     )
+    // }
 
     function handleDeleteClick(deletedFavPolicy){
         console.log(deletedFavPolicy, "Inside handleDeleteClick")
@@ -34,12 +46,18 @@ function UserContainer ({setCurrentUser, currentUser }){
         setFavoritePolicies(updatedFavoritePolicies)
         console.log(favoritePolicies, "Inside handleDeleteClick filter")
       }
-
+    if (!favoritePolicies){
+        return(
+        <div>
+            Loading...
+        </div>
+        )
+    } 
     const displayFavoritePolicies = favoritePolicies.map((favpolicy)=> {
         console.log(favpolicy)
         return(
             <FavoritePolicyCard 
-            key = {favoritePolicies.law_citation}
+            key = {favpolicy.id}
             currentUser = { currentUser }
             favpolicy = { favpolicy }
             id = {favpolicy.id}
