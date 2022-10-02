@@ -52,7 +52,7 @@ function UpdateUser({ currentUser, setCurrentUser }){
         />
         <StyledButton>Update</StyledButton>
         </form>
-        <Link to={'/'}>
+        <Link to={'/user'}>
             <StyledButton>I've Changed My Mind</StyledButton>
         </Link>
         </StyledDiv.UserBackground>
