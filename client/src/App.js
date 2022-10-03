@@ -14,12 +14,15 @@ import DeleteFavorite from './components/DeleteFavorite';
 
 // import './App.css';
 import './index.css';
+import { FP_ID } from './tools/FavPolContext';
 
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState("");
-  
+  const [value, setValue] = useState([]);
+
+
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {
@@ -34,7 +37,7 @@ function App() {
   console.log(currentUser.id, "From App")
 
   return (
-    <>
+    <><FP_ID.Provider value={{ value, setValue }}> 
       <Routes>
         <Route path="/" element={ <Home /> } />
 
@@ -44,16 +47,19 @@ function App() {
 
         <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
 
-      { currentUser && <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser }>< UserContainer currentUser={ currentUser}/></AuthRoute>}/>}
+        
+        { currentUser && <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser }>< UserContainer currentUser={ currentUser}/></AuthRoute>}/>}
 
         <Route path="/user/:id" element= {<AuthRoute setCurrentUser={   setCurrentUser } >< UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
 
         <Route path="/done" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
 
         {currentUser && <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={   setCurrentUser } >< DeleteFavorite /></AuthRoute>}/>}
+      
 
         <Route path="*" element={ <NotFound /> } />
       </Routes>
+      </FP_ID.Provider>
     </>
   );
 }

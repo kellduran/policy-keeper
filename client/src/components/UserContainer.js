@@ -8,10 +8,10 @@ import theme from "../styled-comps/theme";
 
 
 
+
 function UserContainer ({ currentUser }){
-    
-    
     const [favoritePolicies, setFavoritePolicies] = useState([])
+    
     
 
     // console.log (currentUser.id, "userContainer currentUser.id")

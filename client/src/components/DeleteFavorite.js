@@ -1,27 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FP_ID } from "../tools/FavPolContext";
+
+
 
 function DeleteFavorite({ currentUser,  favpolicy, handleDeleteClick, favPolicyRealID }){
-    // const { id } = favpolicy
+    const { value } = useContext(FP_ID)
     const navigate = useNavigate();
+
 
     // function handleDelete(){
     //     fetch(`favorite/${favPolicyRealID}`, {
     //       method: "DELETE",
     //    }).then(navigate('/user'));
     //   }
-      console.log(favpolicy,"DeleteFav-favpolicy object")  
-      console.log(favPolicyRealID, " deleteFavorite, favPolicyRealID")  
+       
+       
       console.log(currentUser, "DeleteFav")  
-      console.log(handleDeleteClick, "DeleteFav")
-    
+      
     function handleClick(e){
         console.log(favpolicy, "YouClicked")
-        
-        console.log(favPolicyRealID, "inside handleClick ID")
+        console.log(handleDeleteClick, "DeleteFav inside handleClick")
+    
+        console.log(value, "inside handleClick Delete Fav value")
         // fetch(`favorites/${favpolicy.id}`, {
         //     method: "DELETE",
-        //  }).then(handleDeleteClick(favpolicy.id))
+        //  }).then(handleDeleteClick(value))
         //  .then(navigate("/user"));
     }
     
