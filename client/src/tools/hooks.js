@@ -12,11 +12,12 @@ export const NavButton = ({ path = '/', text = "back" }) => {
     )
 }
 
-export const AuthRoute = ({ children, setCurrentUser }) => {
+export const AuthRoute = ({ children, setCurrentUser, currentUser }) => {
     const navigate = useNavigate()
-    console.log(children, "CHILDREN FROM AUTHROUTE")
+   
     useEffect(() => {
-        fetch("/me").then((res) => {
+      if(!currentUser) {
+          fetch("/me").then((res) => {
           if (res.ok) {
             res.json().then((user) => {
               setCurrentUser(user);
@@ -26,8 +27,9 @@ export const AuthRoute = ({ children, setCurrentUser }) => {
             navigate('/login')
           }
         })
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+    }, [])
 
     return (
         <>

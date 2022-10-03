@@ -4,40 +4,39 @@ import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import DeleteFavorite from "./DeleteFavorite";
 
-function FavoritePolicyCard({ favpolicy, currentUser }){
+function FavoritePolicyCard({ favpolicy, setFavoritePolicies, id }){
     const navigate = useNavigate();
-    const favPolicyRealID = favpolicy.favorites[0].id
+    // const favPolicyRealID = favpolicy.favorites[0].id
 
-    const [favoritePolicies, setFavoritePolicies] = useState([favpolicy])
+    // const [favoritePolicies, setFavoritePolicies] = useState([favpolicy])
    
     // console.log(favpolicy, "hello from favpolicycard")
     // const { id } = favpolicy.id
- 
+    
     function handleClick(e){
         console.log( "YouClicked")
-        
-        console.log(favPolicyRealID, "inside handleClick ID")
-        fetch(`favorites/${favPolicyRealID}`, {
+        console.log(favpolicy, " in FavPolicyCard")
+       
+        fetch(`favorites/${id}`, {
             method: "DELETE",
-         }).then(handleDeleteClick(favPolicyRealID)).then(navigate("/policy"));
+         }).then(()=>{
+         handleDeleteClick();
+        //  navigate("/policy")
+        })
     }
 
-    function handleDeleteClick(deletedFavPolicy){
-        console.log(deletedFavPolicy, "Inside handleDeleteClick")
-       
-        const updatedFavoritePolicies = favoritePolicies.filter((policy) => favPolicyRealID !== deletedFavPolicy)
-        
-        setFavoritePolicies(updatedFavoritePolicies)
-        
-        console.log(favoritePolicies, "Inside handleDeleteClick filter")
-      }
-    //moved to userContainer so that could pass updated favpolicy
-    // function handleDeleteClick(deletedFavPolicy){
-    //     console.log(deletedFavPolicy)
-    //     const updatedFavoritePolicies = favoritePolicies.filter((policy) => policy.id !== deletedFavPolicy.id)
-    //     setFavoritePolicies(updatedFavoritePolicies)
-    //   }
-    
+    function handleDeleteClick(){
+        setFavoritePolicies( (oldPolicies) => {
+            console.log(oldPolicies)
+            const newPolicies = oldPolicies.filter((favorite) => {
+                return favorite.policy.id !== favpolicy.id
+            
+
+            })
+            console.log(newPolicies)
+            return newPolicies
+        } )
+    }
 
     // function showDelete(e){
     //     console.log(favpolicy,"inside showDelete")
