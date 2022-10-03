@@ -12,6 +12,7 @@ function UserContainer ({ currentUser }){
     
     
     const [favoritePolicies, setFavoritePolicies] = useState([])
+    const [updatePolicies, setUpdatePolicies] = useState([])
     
 
     // console.log (currentUser.id, "userContainer currentUser.id")
@@ -27,25 +28,29 @@ function UserContainer ({ currentUser }){
             setFavoritePolicies(res)
             }
             );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-        
+    // eslint-disable-next-line react-hooks/exhaustive-deps    
     }, []);
 
-    // if(!currentUser)
-    // {
-    //     return(
-    //     <div>
-    //         Loading...
-    //     </div>
-    //     )
-    // }
+    if(!currentUser)
+    {
+        return(
+        <div>
+            Loading...
+        </div>
+        )
+    }
 
     function handleDeleteClick(deletedFavPolicy){
         console.log(deletedFavPolicy, "Inside handleDeleteClick")
-        const updatedFavoritePolicies = favoritePolicies.filter((policy) => policy.id !== deletedFavPolicy.id)
+       
+        const updatedFavoritePolicies = favoritePolicies.filter((policy) => favoritePolicies.favorites[0].id!== deletedFavPolicy)
+        
         setFavoritePolicies(updatedFavoritePolicies)
+        setUpdatePolicies(updatedFavoritePolicies)
+        
         console.log(favoritePolicies, "Inside handleDeleteClick filter")
       }
+
     if (!favoritePolicies){
         return(
         <div>
@@ -53,6 +58,8 @@ function UserContainer ({ currentUser }){
         </div>
         )
     } 
+
+
     const displayFavoritePolicies = favoritePolicies.map((favpolicy)=> {
         console.log(favpolicy)
         return(
@@ -61,7 +68,6 @@ function UserContainer ({ currentUser }){
             currentUser = { currentUser }
             favpolicy = { favpolicy }
             id = {favpolicy.id}
-            handleDeleteClick = {handleDeleteClick}
             />
         )
 

@@ -1,49 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import DeleteFavorite from "./DeleteFavorite";
 
-function FavoritePolicyCard({ favpolicy, currentUser, handleDeleteClick }){
+function FavoritePolicyCard({ favpolicy, currentUser }){
     const navigate = useNavigate();
-    
+    const favPolicyRealID = favpolicy.favorites[0].id
 
-    // const [favoritePolicies, setFavoritePolicies] = useState([])
+    const [favoritePolicies, setFavoritePolicies] = useState([favpolicy])
    
     // console.log(favpolicy, "hello from favpolicycard")
     // const { id } = favpolicy.id
  
-    // function handleClick(e){
-    //     console.log(favpolicy, "YouClicked")
+    function handleClick(e){
+        console.log( "YouClicked")
         
-    //     console.log(favpolicy.id, "inside handleClick ID")
-    //     fetch(`favorites/${favpolicy.id}`, {
-    //         method: "DELETE",
-    //      }).then(handleDeleteClick(favpolicy.id));
-    // }
+        console.log(favPolicyRealID, "inside handleClick ID")
+        fetch(`favorites/${favPolicyRealID}`, {
+            method: "DELETE",
+         }).then(handleDeleteClick(favPolicyRealID)).then(navigate("/policy"));
+    }
 
-
+    function handleDeleteClick(deletedFavPolicy){
+        console.log(deletedFavPolicy, "Inside handleDeleteClick")
+       
+        const updatedFavoritePolicies = favoritePolicies.filter((policy) => favPolicyRealID !== deletedFavPolicy)
+        
+        setFavoritePolicies(updatedFavoritePolicies)
+        
+        console.log(favoritePolicies, "Inside handleDeleteClick filter")
+      }
     //moved to userContainer so that could pass updated favpolicy
     // function handleDeleteClick(deletedFavPolicy){
     //     console.log(deletedFavPolicy)
     //     const updatedFavoritePolicies = favoritePolicies.filter((policy) => policy.id !== deletedFavPolicy.id)
     //     setFavoritePolicies(updatedFavoritePolicies)
     //   }
-    const favPolicyRealID = favpolicy.favorites[0].id
+    
 
-    function showDelete(e){
-        console.log(favpolicy,"inside showDelete")
-        console.log(favpolicy.favorites[0].id,"inside showDelete")
-        console.log(favPolicyRealID,"FavPolicyRealID inside showDelete")
-        console.log(currentUser,"inside showDelete")
-        console.log(handleDeleteClick,"inside showDelete")
-        // navigate("/removepolicy")
-        return(
-            <DeleteFavorite favpolicy={ favpolicy } currentUser={ currentUser }
-            handleDeleteClick={ handleDeleteClick }
-            favPolicyRealID={favPolicyRealID}/>
-        )
-    }
+    // function showDelete(e){
+    //     console.log(favpolicy,"inside showDelete")
+    //     console.log(favpolicy.favorites[0].id,"inside showDelete")
+    //     console.log(favPolicyRealID,"FavPolicyRealID inside showDelete")
+    //     console.log(currentUser,"inside showDelete")
+    //     console.log(handleDeleteClick,"inside showDelete")
+    //     // navigate("/removepolicy")
+    //     return(
+    //         <DeleteFavorite favpolicy={ favpolicy } currentUser={ currentUser }
+    //         handleDeleteClick={ handleDeleteClick }
+    //         favPolicyRealID={favPolicyRealID}/>
+    //     )
+    // }
 
     return(
         <>
@@ -60,7 +68,7 @@ function FavoritePolicyCard({ favpolicy, currentUser, handleDeleteClick }){
         <h2>Source: {favpolicy.source} </h2>
        <br/>
         {/* <Link to={"/removepolicy"} > */}
-        <StyledButton onClick={showDelete}>Remove Policy</StyledButton>
+        <StyledButton onClick={handleClick}>Remove Policy</StyledButton>
         {/* </ Link> */}
         </StyledDiv>
         

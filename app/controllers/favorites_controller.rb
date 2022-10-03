@@ -20,8 +20,10 @@ class FavoritesController < ApplicationController
     end
 
     def destroy
-        favorite_to_destroy=current_user.favorites.find_by(policy: Policy.find(params[:id]))
-        favorite_to_destroy.destroy
+        # favorite_to_destroy=current_user.favorites.find_by(policy: Policy.find(params[:id]))
+        # favorite_to_destroy.destroy 
+        favorite= Favorite.find(params[:id])
+        favorite.destroy
         head :no_content
     end
 
