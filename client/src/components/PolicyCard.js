@@ -2,50 +2,51 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StyledButton from "../styled-comps/StyledButton";
 
-function PolicyCard({ policy, currentUser }){
+function PolicyCard({ policy, currentUser, handleClickCreate }){
 
     const navigate = useNavigate();
     
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState([])
-
-
+    //state for toggle button on save use handleClick to set here 
+  // const [saved, setSaved] = useState(true)
     
     function handleClick(e){
       e.preventDefault();
 
-      console.log("ClickyClicky", policy.id)
-      console.log("Me too!", currentUser.id)
+      
 
 
-      const favoriteBody={favorite:{user_id:currentUser.id, policy_id:policy.id}} 
+      const favoriteBody={favorite:{ policy_id: policy.id }} 
 
-      console.log(favoriteBody, "consider me handled")
+      
+      handleClickCreate(favoriteBody)
+      // setSaved(false)  
 
-        
 
-
-      fetch("/favorites", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(favoriteBody),
-        })
-        .then((res) => {
-          if (res.ok) {
-            res.json()
-          .then(navigate('/user'))
-          } else {
-            res.json()
-            .then((json) => setErrors(json.errors))
-            .then(navigate('/'));
-          }
-        })
+      // fetch("/favorites", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(favoriteBody),
+      //   })
+      //   .then((res) => {
+      //     if (res.ok) {
+      //       res.json()
+      //     .then(() => navigate('/user'))
+      //     } else {
+      //       res.json()
+      //       .then((json) => {
+      //         setErrors(json.errors)
+      //         navigate('/')
+      //       })
+      //     }
+      //   })
   }
     
 
-    //create!favorite on this card with params filled in which is triggered by an onClick- consider adding validation so that you a user can't favorite the same policy 2x
+    
 
     return(
         <>
@@ -59,10 +60,12 @@ function PolicyCard({ policy, currentUser }){
         <h2>Policy Type: {policy.policy_type} </h2>
         <h2>Database Retrieved From: {policy.database} </h2>
         <h2>Source: {policy.source} </h2>
-        <StyledButton onClick={handleClick}>Keep!</StyledButton>
-        </div>
+       {/* { saved ?
+       <StyledButton onClick={handleClick}>Keep!</StyledButton> : <h2> Already Saved </h2>} */}
+       <StyledButton onClick={handleClick}>Keep!</StyledButton> 
         <br/>
-        </>
+        </div>
+      </>
     )
 }
 

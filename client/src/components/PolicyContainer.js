@@ -5,26 +5,65 @@ import StyledDiv from "../styled-comps/BackgroundStyle";
 import Search from "./Search";
 import PolicyList from "./PolicyList";
 
-function PolicyContainer({ currentUser, setCurrentUser }){
-    console.log(currentUser)
-    const [showPolicies, setShowPolicies] = useState([])
-    const navigate = useNavigate()
+function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate }){
+  // console.log(currentUser)
+  const [showPolicies, setShowPolicies] = useState([])
+  const navigate = useNavigate()
+  // const [favoritePolicies, setFavoritePolicies ]= useState([])
 
-    useEffect(() => {
-        if (!currentUser){
-            console.log("not seeing currentUser")
-            fetch("/me").then((res) => {
-                if (res.ok) {
-                  res.json().then((user) => {
-                    setCurrentUser(user);
-                }).then(getPolicies);
-                } else {
-              navigate('/login')
-                }})
-        } 
+  
+  
+  useEffect(() => {
+    if (!currentUser){
+      console.log("not seeing currentUser")
+      fetch("/me").then((res) => {
+        if (res.ok) {
+          res.json().then((user) => {
+            setCurrentUser(user);
+          })
+          .then(getPolicies);
+        } else {
+          navigate('/login')
+        }
+      })
+    } 
 
-    }, [])
-        
+  }, [])
+
+  // function handleClickCreate(favoriteBody){
+      
+  //   // console.log("ClickyClicky", policy.id)
+  //   // console.log("Me too!", currentUser.id)
+  //   // const favoriteBody={favorite:{user_id:currentUser.id, policy_id:policy.id}} 
+
+  //   console.log(favoriteBody, "inside clickCreate PolicyContianer")
+
+  //   fetch("/favorites", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(favoriteBody),
+  //     })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         res.json()
+  //       .then((json) => {
+  //         // setFavoritePolicies(json)
+  //       })
+  //       } else {
+  //         res.json()
+  //         .then((json) => {
+  //           // setErrors(json.errors)
+  //           navigate('/')
+  //         })}
+  //   })
+  //}
+
+  // console.log(favoritePolicies, "favoritePolicies from policy container")
+  
+  
+  
     const getPolicies = 
     useEffect(() => {
         fetch("/policies")
@@ -32,8 +71,6 @@ function PolicyContainer({ currentUser, setCurrentUser }){
           .then((r)=>setShowPolicies(r));
     }, []);
     
-    console.log(showPolicies)
-    console.log("policy Contianer")
 
     const [ searchString, setSearchString ] = useState('')
 
@@ -73,7 +110,7 @@ function PolicyContainer({ currentUser, setCurrentUser }){
         </StyledDiv.UserBackground>
         <StyledDiv.PolicyBackground>
             <Search changeSearchString={ changeSearchString }/>
-            <PolicyList filteredPolicies={ filteredPolices } currentUser= { currentUser }/>
+            <PolicyList filteredPolicies={ filteredPolices } currentUser= { currentUser } handleClickCreate={ handleClickCreate }/>
         {/* {displayPolicies} */}
         </StyledDiv.PolicyBackground>
         </>

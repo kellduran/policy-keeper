@@ -5,7 +5,7 @@ import theme from "../styled-comps/theme";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 
-function Login({ setCurrentUser, currentUser }){
+function Login({ setCurrentUser, setFavoritePolicies }){
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors] = useState([])
     
@@ -42,8 +42,9 @@ function Login({ setCurrentUser, currentUser }){
             if (res.ok) {
             res.json().then((user) => 
             {
-              currentUser = setCurrentUser(user)
-              console.log(user)
+              setCurrentUser(user)
+              setFavoritePolicies(user.favorites)
+              console.log(user, "in Login.js")
             }).then(navigate('/'));
           } else {
             res.json().then((json) =>
