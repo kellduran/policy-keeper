@@ -9,10 +9,12 @@ function DeleteUser({ currentUser, setCurrentUser }){
     //put in rest of destroy user
     function handleDelete(){
         fetch(`users/${id}`, {
-          method: "DELETE",
+          method: "DELETE"
        })
-         .then(setCurrentUser(""))
-         .then(navigate('/'));
+         .then(() => {
+            setCurrentUser("")
+            navigate('/')
+         })
       }
 
     return(

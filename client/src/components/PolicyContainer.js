@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavButton } from "../tools/hooks";
 import { useNavigate } from "react-router-dom";
 import StyledDiv from "../styled-comps/BackgroundStyle";
-import Search from "./Search";
+import Search from "../tools/Search";
 import PolicyList from "./PolicyList";
 
 function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate }){
@@ -28,39 +28,9 @@ function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate }){
       })
     } 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  // function handleClickCreate(favoriteBody){
-      
-  //   // console.log("ClickyClicky", policy.id)
-  //   // console.log("Me too!", currentUser.id)
-  //   // const favoriteBody={favorite:{user_id:currentUser.id, policy_id:policy.id}} 
-
-  //   console.log(favoriteBody, "inside clickCreate PolicyContianer")
-
-  //   fetch("/favorites", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(favoriteBody),
-  //     })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         res.json()
-  //       .then((json) => {
-  //         // setFavoritePolicies(json)
-  //       })
-  //       } else {
-  //         res.json()
-  //         .then((json) => {
-  //           // setErrors(json.errors)
-  //           navigate('/')
-  //         })}
-  //   })
-  //}
-
-  // console.log(favoritePolicies, "favoritePolicies from policy container")
+  
   
   
   

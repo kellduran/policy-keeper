@@ -12,7 +12,7 @@ import UpdateUser from './components/UpdateUser';
 import DeleteUser from './components/DeleteUser';
 import DeleteFavorite from './components/DeleteFavorite';
 
-// import './App.css';
+
 import './index.css';
 
 
@@ -35,11 +35,7 @@ function App() {
     })
   }, [])
 
-  function handleClickCreate(favoriteBody){
-      
-   
-
-    // console.log(favoriteBody, "inside clickCreate App")
+  function handleClickCreate(favoriteBody){    
 
     fetch("/favorites", {
       method: "POST",
@@ -77,15 +73,15 @@ function App() {
 
         <Route path="/signup" element={ <SignupForm setCurrentUser={ setCurrentUser } currentUser={ currentUser }/> } />
 
-        <Route path="/policy" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser} handleClickCreate={handleClickCreate}/></AuthRoute>}/>
+        <Route path="/policy" element= { <AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser} handleClickCreate={handleClickCreate} /></AuthRoute> } />
 
-      { currentUser && <Route path="/user" element= {<AuthRoute setCurrentUser={   setCurrentUser }>< UserContainer currentUser={ currentUser } favoritePolicies={ favoritePolicies } setFavoritePolicies={ setFavoritePolicies }/></AuthRoute>}/>}
+      { currentUser && <Route path="/user" element= { <AuthRoute setCurrentUser={   setCurrentUser }><UserContainer currentUser={ currentUser } favoritePolicies={ favoritePolicies } setFavoritePolicies={ setFavoritePolicies } /></AuthRoute> } /> }
 
-        <Route path="/user/:id" element= {<AuthRoute setCurrentUser={   setCurrentUser } >< UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/user/:id" element= { <AuthRoute setCurrentUser={   setCurrentUser } ><UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser} /></AuthRoute> } />
 
-        <Route path="/done" element= {<AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }>< DeleteUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser}/></AuthRoute>}/>
+        <Route path="/done" element= { <AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><DeleteUser setCurrentUser= {  setCurrentUser }  currentUser={ currentUser } /></AuthRoute> } />
 
-        {currentUser && <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={   setCurrentUser } >< DeleteFavorite /></AuthRoute>}/>}
+        {currentUser && <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={ setCurrentUser } ><DeleteFavorite /></AuthRoute> } /> }
 
         <Route path="*" element={ <NotFound /> } />
       </Routes>

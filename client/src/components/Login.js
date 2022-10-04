@@ -7,57 +7,58 @@ import StyledDiv from "../styled-comps/BackgroundStyle";
 
 function Login({ setCurrentUser, setFavoritePolicies }){
     // eslint-disable-next-line no-unused-vars
-    const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([])
     
-    const [formData, setFormData] = useState({
-        user_name: "",
-        password: "",
-      });
+  const [formData, setFormData] = useState({
+    user_name: "",
+    password: "",
+  });
       
    
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  };
   
+  const navigate = useNavigate();
+  
+  function handleSubmit(e) {
+    e.preventDefault();
     
-      const handleChange = (e) => {
-        setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
-        })
-      };
-  
-      const navigate = useNavigate();
-  
-      function handleSubmit(e) {
-        e.preventDefault();
-        
-        const userCreds = { ...formData };
-        //console.log("you clicked me", userCreds)
-        
-        fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userCreds),
-          }).then((res) => {
-            if (res.ok) {
-            res.json().then((user) => 
-            {
-              setCurrentUser(user)
-              setFavoritePolicies(user.favorites)
-              console.log(user, "in Login.js")
-            }).then(navigate('/'));
-          } else {
-            res.json().then((json) =>
-            setErrors(json.errors)
-            ).then(navigate('/'));
-          }
+    const userCreds = { ...formData };
+    
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userCreds),
+      }).then((res) => {
+        if (res.ok) {
+        res.json().then((user) => 
+        {
+          setCurrentUser(user)
+          setFavoritePolicies(user.favorites)
+          console.log(user, "in Login.js")
+        }).then(navigate('/'));
+        } else {
+          throw Error('Error could not complete request').catch((error) => {
+            setErrors(error.message)
           })
-      }
+          // res.json().then((json) =>
+          // setErrors(errors.message)
+        //)
+        // .then(navigate('/'));
+        }
+      })
+  }
 
-    return(
-        <StyledDiv.UserBackground>
-        <h2 style={{color: theme.bone}}>Please Log In to Continue!</h2>
-        <form onSubmit={handleSubmit}>
+  return(
+    <StyledDiv.UserBackground>
+      <h2 style={{color: theme.bone}}>Please Log In to Continue!</h2>
+      <form onSubmit={handleSubmit}>
         <label style={{color: theme.bone }}htmlFor="username">Username: </label>
         <input
           id="username-signup-input"
@@ -74,7 +75,7 @@ function Login({ setCurrentUser, setFavoritePolicies }){
           value={formData.password}
           onChange={handleChange}
         />
-        <label style={{color: theme.bone }}htmlFor="confirm-password">Confirm Password: </label>
+        <label style={{color: theme.bone }}htmlFor="confirm-password">Confirm Password: </  label>
         <input
           id="confirm-password-signup-input"
           type="password"
@@ -82,11 +83,12 @@ function Login({ setCurrentUser, setFavoritePolicies }){
         />
         <StyledButton type="submit">Submit</StyledButton>
       </form>
+      { errors && <div>{errors}</div>} 
       <NavButton path="/" text="Home" />
-        </StyledDiv.UserBackground>
+    </StyledDiv.UserBackground>
 
         
-    );
+  );
 }
 
 export default Login;

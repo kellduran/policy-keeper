@@ -2,7 +2,7 @@ import React from "react";
 import PolicyCard from "./PolicyCard";
 
 
-function PolicyList({filteredPolicies, currentUser, handleClickCreate}){
+function PolicyList( { filteredPolicies, currentUser, handleClickCreate } ){
     
     // console.log(filteredPolicies, "from policy list")
     // console.log(currentUser, "from policy list")
@@ -10,7 +10,7 @@ function PolicyList({filteredPolicies, currentUser, handleClickCreate}){
     const displayPolicies = filteredPolicies.map((policy) => {
         return(
             <PolicyCard 
-            key = {policy.id}
+            key = { policy.id }
             currentUser = { currentUser }
             policy = { policy }
             handleClickCreate={ handleClickCreate }

@@ -32,8 +32,11 @@ function UpdateUser({ currentUser, setCurrentUser }){
         body: JSON.stringify(formData)
       }).then((res) => {
         if(res.ok) {
-            res.json().then(console.log(formData))
-        }}).then(navigate('/'))
+            res.json().then((json) => {
+                setCurrentUser(json)
+                navigate('/user')
+            })
+        }})
     }
     
     const navigate = useNavigate();
@@ -41,20 +44,20 @@ function UpdateUser({ currentUser, setCurrentUser }){
     return(
         <>
         <StyledDiv.UserBackground>
-        <form onSubmit={handleSubmit}>
-        <label style={{color: theme.bone }}htmlFor="username">Update Username: </label>
-        <input
-          id="username-signup-input"
-          type="text"
-          name="user_name"
-          value={formData.user_name}
-          onChange={handleChange}
-        />
-        <StyledButton>Update</StyledButton>
-        </form>
-        <Link to={'/user'}>
-            <StyledButton>I've Changed My Mind</StyledButton>
-        </Link>
+            <form onSubmit={ handleSubmit }>
+                <label style={ { color: theme.bone } }htmlFor="username">Update Username: </   label>
+                <input
+                  id="username-signup-input"
+                  type="text"
+                  name="user_name"
+                  value={ formData.user_name }
+                  onChange={ handleChange }
+                />
+                <StyledButton>Update</StyledButton>
+            </form>
+            <Link to={'/user'}>
+                <StyledButton>I've Changed My Mind</StyledButton>
+            </Link>
         </StyledDiv.UserBackground>
         </>
     )
