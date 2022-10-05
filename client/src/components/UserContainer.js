@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import theme from "../styled-comps/theme";
+import { Separator } from "../styled-comps/SeparatorSpan";
 
 
 
@@ -39,14 +40,17 @@ function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies }){
          <NavButton path="/policy" text="Policies" />
          </div>
         <StyledDiv.UserBackground>
+            <Separator />
             <h2>Username: {currentUser.user_name} </h2>
+            <Separator />
             <h2>Email: {currentUser.user_email} </h2>
+            <Separator />
             <br/>
             <Link to={`/user/${id}`}>
-            <StyledButton>Update My Information</ StyledButton>
+            <StyledButton.UpdatePolicyButton>Update My Information</ StyledButton.UpdatePolicyButton>
             </Link>
             <Link to={"/done"}>
-            <StyledButton>Delete My Account</ StyledButton>
+            <StyledButton.UserDeleteButton>Delete My Account</ StyledButton.UserDeleteButton>
             </Link>
         </StyledDiv.UserBackground>
         <StyledDiv>

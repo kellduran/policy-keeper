@@ -32,7 +32,7 @@ function FavoritePolicyCard({ favpolicy, setFavoritePolicies, id }){
 
     return(
         <>
-        <StyledDiv key={favpolicy.law_citation}>
+        <StyledDiv.PolicyCardBackground key={favpolicy.law_citation}>
         <h2>State: {favpolicy.state}</h2>
         <h2>Law Citation: {favpolicy.law_citation} </h2>
         <h2>Title: {favpolicy.title} </h2>
@@ -43,8 +43,8 @@ function FavoritePolicyCard({ favpolicy, setFavoritePolicies, id }){
         <h2>Database Retrieved From: {favpolicy.database} </h2>
         <h2>Source: {favpolicy.source} </h2>
        <br/>
-        <StyledButton onClick={handleClick}>Remove Policy</StyledButton>
-        </StyledDiv>
+        <StyledButton.RemovePolicyButton onClick={handleClick}>Remove Policy</StyledButton.RemovePolicyButton>
+        </StyledDiv.PolicyCardBackground>
         </>
     )
 }
