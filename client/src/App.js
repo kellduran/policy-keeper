@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { NotFound } from './components/landings';
 import { AuthRoute } from './tools/hooks';
 
@@ -10,7 +10,7 @@ import UserContainer from './components/UserContainer.js';
 import PolicyContainer from './components/PolicyContainer';
 import UpdateUser from './components/UpdateUser';
 import DeleteUser from './components/DeleteUser';
-import DeleteFavorite from './components/DeleteFavorite';
+
 
 
 import './index.css';
@@ -21,7 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [errors, setErrors] = useState([])
   
-  const navigate = useNavigate()
+  
 
 
   useEffect(() => {
@@ -80,8 +80,6 @@ function App() {
         <Route path="/user/:id" element= { <AuthRoute setCurrentUser={   setCurrentUser } ><UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser} /></AuthRoute> } />
 
         <Route path="/done" element= { <AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><DeleteUser setCurrentUser= {  setCurrentUser }  currentUser={ currentUser } /></AuthRoute> } />
-
-        {currentUser && <Route path="/removepolicy" element= {<AuthRoute setCurrentUser={ setCurrentUser } ><DeleteFavorite /></AuthRoute> } /> }
 
         <Route path="*" element={ <NotFound /> } />
       </Routes>

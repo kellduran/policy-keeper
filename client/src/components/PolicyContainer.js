@@ -59,15 +59,6 @@ function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate, favor
     })
 
 
-    // const displayPolicies = showPolicies.map((policy) => {
-    //     return(
-    //         <PolicyCard 
-    //         key = {policy.id}
-    //         currentUser = { currentUser }
-    //         policy = { policy }
-    //         />
-    //     )
-    // })
     return(
         <>
         <div>

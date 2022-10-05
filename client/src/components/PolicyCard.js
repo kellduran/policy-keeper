@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import StyledButton from "../styled-comps/StyledButton";
 
 function PolicyCard({ policy, handleClickCreate, favoritePolicies }){

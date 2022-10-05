@@ -13,31 +13,6 @@ function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies }){
     const { id } = currentUser
     // console.log(id)
     
-    // useEffect(() => {
-    
-    //     fetch(`/favorites/${id}`)
-    //       .then((res) => res.json())
-    //       .then((res)=>{
-    //         console.log(res, "from favorites fetch usercontainer")
-    //         setFavoritePolicies(res)
-    //         }
-    //         );
-    // // eslint-disable-next-line react-hooks/exhaustive-deps    
-    // }, []);
-
-
-    // function handleDeleteClick(deletedFavPolicy){
-    //     console.log(deletedFavPolicy, "Inside handleDeleteClick")
-       
-    //     const updatedFavoritePolicies = favoritePolicies.filter((policy) => favoritePolicies.favorites[0].id!== deletedFavPolicy)
-        
-    //     setFavoritePolicies(updatedFavoritePolicies)
-    //     setUpdatePolicies(updatedFavoritePolicies)
-        
-    //     console.log(favoritePolicies, "Inside handleDeleteClick filter")
-    //   }
-
-
 
     const displayFavoritePolicies = favoritePolicies.map((favpolicy)=> {
         console.log(favpolicy)
