@@ -43,7 +43,6 @@ function UpdateUser({ currentUser, setCurrentUser }){
             })
         } else {
             res.json().then( (data) => {
-                debugger
                 setErrors(data.errors)
             }  )
         }
@@ -69,6 +68,7 @@ function UpdateUser({ currentUser, setCurrentUser }){
             <Link to={'/user'}>
                 <StyledButton>I've Changed My Mind</StyledButton>
             </Link>
+            { errors ? errors.map( (error) => <div>{ error }</div> ) : null }
         </StyledDiv.UserBackground>
         </>
     )

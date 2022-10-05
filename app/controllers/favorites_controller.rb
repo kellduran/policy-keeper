@@ -12,16 +12,11 @@ class FavoritesController < ApplicationController
     def create 
         favorite = Favorite.new(favorite_params)
         favorite.user = @current_user
-        favorite.save
+        favorite.save!
         r = { favorite_id: favorite.id, policy: favorite.policy }
         render json: r, status: :created
     end
 
-    #just send back one fave instead of all
-    # def update 
-    #     find_favorite.update!(favorite_params)
-    #     render json: favorite_policies, status: :ok
-    # end
 
     def destroy
         # favorite_to_destroy=current_user.favorites.find_by(policy: Policy.find(params[:id]))
