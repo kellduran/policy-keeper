@@ -8,8 +8,9 @@ import StyledDiv from "../styled-comps/BackgroundStyle";
 
 
 const SignupForm = ({ currentUser, setCurrentUser }) => {
-  // eslint-disable-next-line no-unused-vars
+  
   const [errors, setErrors] = useState([])
+  const [welcome, setWelcome] = useState(false)
     
   const [formData, setFormData] = useState({
     user_name: "",
@@ -44,13 +45,15 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) =>{
-          currentUser = setCurrentUser(user)
-          navigate('/')})
-          .then(navigate('/'))
+          setCurrentUser(user)
+          setWelcome(true)
+          // navigate('/')
+        })
         } else {
-        res.json().then((json) => 
-          setErrors(json.errors)
-        ).then(navigate('/'));
+        res.json().then((json) => {
+          setErrors(json)
+        }
+        );
       }
     })
   }
@@ -93,8 +96,12 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
           />
           <StyledButton type="submit">Submit</StyledButton>
         </form>
+        
         <NavButton path="/" text="Home" />
+        { errors ? errors.map( (error) => <div>{ error }</div> ) : null }
+        { welcome ? <div>Welcome! Please click on the confirmation token in your email before attempting to login.</div>  : null }
       </StyledDiv.UserBackground>
+      
     </>
   );
 };

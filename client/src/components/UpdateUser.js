@@ -14,6 +14,8 @@ function UpdateUser({ currentUser, setCurrentUser }){
         is_admin: false
     })
 
+    const [errors, setErrors] = useState ([])
+
     const { id } = currentUser
 
     function handleChange(e){
@@ -27,16 +29,25 @@ function UpdateUser({ currentUser, setCurrentUser }){
         fetch(`/users/${id}`, {
         method: 'PATCH',
         headers: {
+          Accept: 'application/json',  
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       }).then((res) => {
+        
         if(res.ok) {
             res.json().then((json) => {
+                
                 setCurrentUser(json)
                 navigate('/user')
             })
-        }})
+        } else {
+            res.json().then( (data) => {
+                debugger
+                setErrors(data.errors)
+            }  )
+        }
+        })
     }
     
     const navigate = useNavigate();

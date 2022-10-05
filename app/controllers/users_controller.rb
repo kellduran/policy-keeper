@@ -14,7 +14,7 @@ class UsersController < ApplicationController
             UserMailer.registration_confirmation(@user).deliver_later
             render json: {message: "Created check email to finish registration"}, status: :ok 
         else 
-            render json: user.errors.full_messages, status: :unprocessable_enitity
+            render json: @user.errors.full_messages, status: :unprocessable_entity
         end
     end
 
