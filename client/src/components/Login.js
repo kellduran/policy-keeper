@@ -5,7 +5,7 @@ import theme from "../styled-comps/theme";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 
-function Login({ setCurrentUser, setFavoritePolicies }){
+function Login({ setCurrentUser, currentUser, setFavoritePolicies }){
     // eslint-disable-next-line no-unused-vars
   const [errors, setErrors] = useState([])
     
@@ -32,27 +32,28 @@ function Login({ setCurrentUser, setFavoritePolicies }){
     fetch("/login", {
       method: "POST",
       headers: {
+        Accept: 'apllication/json',
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userCreds),
       }).then((res) => {
-        if (res.ok) {
-        res.json().then((user) => 
-        {
-          setCurrentUser(user)
-          setFavoritePolicies(user.favorites)
-          console.log(user, "in Login.js")
-        }).then(navigate('/'));
-        } else {
-          throw Error('Error could not complete request').catch((error) => {
-            setErrors(error.message)
+        if (!res.ok){
+          throw Error('Invalid Username or Password')
+        }})
+        .catch(error => {
+          setErrors(error.message)
+        }).then((res) => {
+          if (res === 200){
+          res.json().then((user) => {
+            setCurrentUser(user)
+            setFavoritePolicies(user.favorites)
           })
-          // res.json().then((json) =>
-          // setErrors(errors.message)
-        //)
-        // .then(navigate('/'));
-        }
-      })
+        }}).then(() => {
+          setFormData( {
+          user_name: "",
+          password: "",
+          } )
+        })
   }
 
   return(
@@ -79,12 +80,14 @@ function Login({ setCurrentUser, setFavoritePolicies }){
         <input
           id="confirm-password-signup-input"
           type="password"
-          name="confirm-password"
+          name="confirm_password"
         />
         <StyledButton type="submit">Submit</StyledButton>
       </form>
-      { errors && <div>{errors}</div>} 
+      { errors && <div>{errors}</div> } 
       <NavButton path="/" text="Home" />
+      <NavButton path="/user" text="My Page" />
+      <NavButton path="/policy" text="Policies" />
     </StyledDiv.UserBackground>
 
         

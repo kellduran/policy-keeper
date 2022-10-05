@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import StyledButton from "../styled-comps/StyledButton";
 
-function PolicyCard({ policy, currentUser, handleClickCreate }){
+function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
 
-  //state for toggle button on save use handleClick to set here 
-  // const [saved, setSaved] = useState(true)
-    
+  
+  
+
   function handleClick(e){
     e.preventDefault();
-
+    
     const favoriteBody={favorite:{ policy_id: policy.id }} 
- 
-    handleClickCreate(favoriteBody)
-    // setSaved(false)  
+    
+    handleClickCreate(favoriteBody) 
 
   }
     
@@ -29,8 +28,6 @@ function PolicyCard({ policy, currentUser, handleClickCreate }){
         <h2>Policy Type: {policy.policy_type} </h2>
         <h2>Database Retrieved From: {policy.database} </h2>
         <h2>Source: {policy.source} </h2>
-        {/* { saved ?
-        <StyledButton onClick={handleClick}>Keep!</StyledButton> : <h2> Already Saved </  h2>} */}
         <StyledButton onClick={handleClick}>Keep!</StyledButton> 
         <br/>
       </div>

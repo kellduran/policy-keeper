@@ -19,7 +19,7 @@ import './index.css';
 function App() {
   const [favoritePolicies, setFavoritePolicies] = useState([])
   const [currentUser, setCurrentUser] = useState("");
-  
+  const [errors, setErrors] = useState([])
   
   const navigate = useNavigate()
 
@@ -54,7 +54,7 @@ function App() {
         } else {
           res.json().then((json) => {
             console.log(json)
-            navigate('/')
+            setErrors(json)
           })
         }
       })
@@ -69,11 +69,11 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home /> } />
 
-        <Route path="/login" element={ <Login setCurrentUser={ setCurrentUser }   currentUser={ currentUser } setFavoritePolicies={setFavoritePolicies}/> } />
+        <Route path="/login" element={ <Login setCurrentUser= { setCurrentUser }   currentUser={ currentUser } setFavoritePolicies={setFavoritePolicies}/> } />
 
-        <Route path="/signup" element={ <SignupForm setCurrentUser={ setCurrentUser } currentUser={ currentUser }/> } />
+        <Route path="/signup" element={ <SignupForm setCurrentUser= { setCurrentUser } currentUser={ currentUser }/> } />
 
-        <Route path="/policy" element= { <AuthRoute setCurrentUser={   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser} handleClickCreate={handleClickCreate} /></AuthRoute> } />
+        <Route path="/policy" element= { <AuthRoute setCurrentUser= {   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser} handleClickCreate={handleClickCreate} favoritePolicies= { favoritePolicies } errors={ errors }/></AuthRoute> } />
 
       { currentUser && <Route path="/user" element= { <AuthRoute setCurrentUser={   setCurrentUser }><UserContainer currentUser={ currentUser } favoritePolicies={ favoritePolicies } setFavoritePolicies={ setFavoritePolicies } /></AuthRoute> } /> }
 

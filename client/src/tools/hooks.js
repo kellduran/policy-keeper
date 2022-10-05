@@ -46,7 +46,7 @@ export const Logout = ( ) => {
     fetch('/logout', {method: "DELETE"})
     .then(res => {
           if (!res.ok) {
-            throw Error('Error could not complete request')
+            throw Error('Not Currently Logged In')
         }})
         .catch(error => {
           setErrors(error.message)

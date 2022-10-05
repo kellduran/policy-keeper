@@ -5,11 +5,11 @@ import StyledDiv from "../styled-comps/BackgroundStyle";
 import Search from "../tools/Search";
 import PolicyList from "./PolicyList";
 
-function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate }){
+function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate, favoritePolicies, errors }){
   // console.log(currentUser)
   const [showPolicies, setShowPolicies] = useState([])
   const navigate = useNavigate()
-  // const [favoritePolicies, setFavoritePolicies ]= useState([])
+  
 
   
   
@@ -80,7 +80,7 @@ function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate }){
         </StyledDiv.UserBackground>
         <StyledDiv.PolicyBackground>
             <Search changeSearchString={ changeSearchString }/>
-            <PolicyList filteredPolicies={ filteredPolices } currentUser= { currentUser } handleClickCreate={ handleClickCreate }/>
+            <PolicyList filteredPolicies={ filteredPolices } currentUser= { currentUser } handleClickCreate={ handleClickCreate } favoritePolicies={ favoritePolicies } errors={ errors } />
         {/* {displayPolicies} */}
         </StyledDiv.PolicyBackground>
         </>
