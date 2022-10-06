@@ -6,15 +6,28 @@ import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import theme from "../styled-comps/theme";
 import StyledSpan from "../styled-comps/SeparatorSpan";
-import StyledH1 from "../styled-comps/TextElementStyle"
+import StyledH1 from "../styled-comps/TextElementStyle";
+import NoteCard from "./NoteCard";
 
 
 
-function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies }){
+function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies, notes, setNotes }){
     
     const { id } = currentUser
     // console.log(id)
     
+    console.log(notes, "from UserContainer")
+
+    const myNotes = notes.map(( note ) => {
+        console.log(note.body, "Note UserContainer")
+        return (
+            <NoteCard
+            key= { note.id }
+            body= { note.body }
+            note= { note }
+            />
+        )
+    })
 
     const displayFavoritePolicies = favoritePolicies.map((favpolicy)=> {
         console.log(favpolicy)
@@ -39,6 +52,7 @@ function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies }){
          {/* <NavButton path="/logout" text="Logout" /> */}
          <NavButton path="/" text="Home" />
          <NavButton path="/policy" text="Policies" />
+         
          </div>
         <StyledDiv.UserMyPageBackground>
             <div>
@@ -55,10 +69,12 @@ function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies }){
             <StyledButton.UserDeleteButton>Delete My Account</ StyledButton.UserDeleteButton>
             </Link>
         </StyledDiv.UserMyPageBackground>
+        <NoteCard />
         <StyledDiv>
          <StyledH1.Style4> My Saved Policies </StyledH1.Style4>   
          </StyledDiv>
         {displayFavoritePolicies}
+        {myNotes}
        
         </>
     )

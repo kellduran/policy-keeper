@@ -6,7 +6,7 @@ import StyledDiv from "../styled-comps/BackgroundStyle"
 function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
 
   
-  
+  console.log(policy, "from policy card")
 
   function handleClick(e){
     e.preventDefault();
@@ -26,7 +26,7 @@ function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
         <h2>Title: {policy.title} </h2>
         <h2>Title Description: {policy.title_description} </h2>
         <h2>Summary: {policy.summary} </h2>
-        {/* <h2>Effective Date: {policy.effective_date} </h2> */}
+        {/* <h2>Effective Date: {policy.effective_year} </h2> */}
         <h2>Policy Type: {policy.policy_type} </h2>
         <h2>Database Retrieved From: {policy.database} </h2>
         <h2>Source: {policy.source} </h2>

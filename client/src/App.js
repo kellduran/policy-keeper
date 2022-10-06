@@ -20,6 +20,7 @@ function App() {
   const [favoritePolicies, setFavoritePolicies] = useState([])
   const [currentUser, setCurrentUser] = useState("");
   const [errors, setErrors] = useState([])
+  const [notes, setNotes] = useState([])
   
   
 
@@ -28,8 +29,10 @@ function App() {
     fetch("/me").then((res) => {
       if (res.ok) {
         res.json().then((user) => {
+          // console.log(user.notes)
           setCurrentUser(user);
           setFavoritePolicies(user.favorites)
+          setNotes(user.notes)
         });
       }
     })
@@ -75,7 +78,7 @@ function App() {
 
         <Route path="/policy" element= { <AuthRoute setCurrentUser= {   setCurrentUser } currentUser={ currentUser }><PolicyContainer   setCurrentUser= { setCurrentUser}  currentUser={ currentUser} handleClickCreate={handleClickCreate} favoritePolicies= { favoritePolicies } errors={ errors }/></AuthRoute> } />
 
-      { currentUser && <Route path="/user" element= { <AuthRoute setCurrentUser={   setCurrentUser }><UserContainer currentUser={ currentUser } favoritePolicies={ favoritePolicies } setFavoritePolicies={ setFavoritePolicies } /></AuthRoute> } /> }
+      { currentUser && <Route path="/user" element= { <AuthRoute setCurrentUser={   setCurrentUser }><UserContainer currentUser={ currentUser } favoritePolicies={ favoritePolicies } setFavoritePolicies={ setFavoritePolicies } notes={ notes } setNotes={ setNotes }/></AuthRoute> } /> }
 
         <Route path="/user/:id" element= { <AuthRoute setCurrentUser={   setCurrentUser } ><UpdateUser setCurrentUser= {  setCurrentUser}  currentUser={ currentUser} /></AuthRoute> } />
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_27_013831) do
+ActiveRecord::Schema.define(version: 2022_10_06_063421) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2022_09_27_013831) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["policy_id"], name: "index_favorites_on_policy_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "policies", force: :cascade do |t|
@@ -49,4 +57,5 @@ ActiveRecord::Schema.define(version: 2022_09_27_013831) do
 
   add_foreign_key "favorites", "policies"
   add_foreign_key "favorites", "users"
+  add_foreign_key "notes", "users"
 end

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :policies, through: :favorites
 
+ has_many :notes
+
   validates :user_name, presence: true, uniqueness: { case_sensitve: false, message: "This username is already taken, please choose another" }, length: { minimum: 3 }
 
   validates :user_email, presence: true

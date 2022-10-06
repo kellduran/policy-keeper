@@ -1,3 +1,5 @@
+Policy.destroy_all
+
 puts "🌱 Seeding..."
 
 # puts "Making Users...."
@@ -63,30 +65,30 @@ Policy.create( state: "PA", law_citation: "49 Pa. Code § 25.177", title: "§ 25
 Policy.create( state: "PA", law_citation: "49 Pa. Code § 33.207", title: "§ 33.207. Prescribing, administering and dispensing controlled substances.", policy_type: "Regulatory", database: "WestLaw", source: "Pennsylvania Administrative Code", title_description: "Title 49. Professional and Vocational Standards", summary: "West's Pennsylvania Administrative Code|**|Title 49. Professional and Vocational Standards|**| Part I. Department of State|**| Subpart A. Professional and Occupational Affairs|**| Chapter 33. State Board of Dentistry|**| Subchapter C. Minimum Standards of Conduct and Practice", effective_year: "06/24/1995", included: "Yes" )
 
 
-puts "Making Favorites"
+# puts "Making Favorites"
 
-Favorite.create(user_id: 1, policy_id: 1)
-Favorite.create(user_id: 1, policy_id: 2)
-Favorite.create(user_id: 1, policy_id: 3)
-Favorite.create(user_id: 1, policy_id: 4)
-Favorite.create(user_id: 1, policy_id: 5)
+# Favorite.create(user_id: 1, policy_id: 1)
+# Favorite.create(user_id: 1, policy_id: 2)
+# Favorite.create(user_id: 1, policy_id: 3)
+# Favorite.create(user_id: 1, policy_id: 4)
+# Favorite.create(user_id: 1, policy_id: 5)
 
-Favorite.create(user_id: 2, policy_id: 11)
-Favorite.create(user_id: 2, policy_id: 21)
-Favorite.create(user_id: 2, policy_id: 41)
-Favorite.create(user_id: 2, policy_id: 2)
+# Favorite.create(user_id: 2, policy_id: 11)
+# Favorite.create(user_id: 2, policy_id: 21)
+# Favorite.create(user_id: 2, policy_id: 41)
+# Favorite.create(user_id: 2, policy_id: 2)
 
-Favorite.create(user_id: 3, policy_id: 36)
-Favorite.create(user_id: 3, policy_id: 7)
-Favorite.create(user_id: 3, policy_id: 24)
-Favorite.create(user_id: 3, policy_id: 27)
+# Favorite.create(user_id: 3, policy_id: 36)
+# Favorite.create(user_id: 3, policy_id: 7)
+# Favorite.create(user_id: 3, policy_id: 24)
+# Favorite.create(user_id: 3, policy_id: 27)
 
-Favorite.create(user_id: 4, policy_id: 17)
-Favorite.create(user_id: 4, policy_id: 33)
-Favorite.create(user_id: 4, policy_id: 10)
-Favorite.create(user_id: 4, policy_id: 12)
+# Favorite.create(user_id: 4, policy_id: 17)
+# Favorite.create(user_id: 4, policy_id: 33)
+# Favorite.create(user_id: 4, policy_id: 10)
+# Favorite.create(user_id: 4, policy_id: 12)
 
-Favorite.create(user_id: 5, policy_id: 6)
-Favorite.create(user_id: 5, policy_id: 10)
-Favorite.create(user_id: 5, policy_id: 19)
-Favorite.create(user_id: 5, policy_id: 64)
+# Favorite.create(user_id: 5, policy_id: 6)
+# Favorite.create(user_id: 5, policy_id: 10)
+# Favorite.create(user_id: 5, policy_id: 19)
+# Favorite.create(user_id: 5, policy_id: 64)
