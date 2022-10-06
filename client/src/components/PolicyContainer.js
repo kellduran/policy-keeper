@@ -5,6 +5,7 @@ import StyledDiv from "../styled-comps/BackgroundStyle";
 import Search from "../tools/Search";
 import PolicyList from "./PolicyList";
 import { Separator } from "../styled-comps/SeparatorSpan";
+import StyledH1 from "../styled-comps/TextElementStyle"
 
 
 
@@ -70,9 +71,9 @@ function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate, favor
         <NavButton path="/user" text="My Page" />
         </div>
         <StyledDiv.PolicyContainerBackground>
-            <h1>Policies Page</h1>
+            <StyledH1>Policies Page:</StyledH1>
             <Separator />
-            <h2>State Level Opioid Prescribing Policies</h2>  
+            <StyledH1.Style2>State Level Opioid Prescribing Policies</StyledH1.Style2>  
         </StyledDiv.PolicyContainerBackground>
         <StyledDiv.PolicyBackground>
             <Search changeSearchString={ changeSearchString }/>

@@ -9,8 +9,6 @@ padding-top: 30px;
 padding-bottom: 20px;
 border-radius: 8px;
 background-color: ${theme.danger};
-
-
 `
 const Input = styled.input`
 
@@ -19,10 +17,21 @@ padding: 5px 0px;
 width: 18%;
 margin: 5px 0px;
 border: 3px, ${theme.berry};
+/* display: block; */
+`
+const Label = styled.input`
 
+font-family: 'News Cycle', sans-serif;
+padding: 5px 0px;
+
+margin: 5px 0px;
+
+/* display: block; */
 `
 
+
 Form.Input = Input
+Form.Label = Label
 
 
 export default Form

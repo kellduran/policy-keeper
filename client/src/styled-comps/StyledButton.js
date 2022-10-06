@@ -13,6 +13,7 @@ margin: 10px;
 height: 50px;
 width: 100px;
 font-size: 20px;
+cursor: pointer;
 
 `
 const Container = styled.div`
@@ -32,6 +33,7 @@ border: none;
 padding: 5px 5px;
 border-radius: 4px;
 margin: 5px;
+cursor: pointer;
 `
 
 const RemovePolicyButton = styled.button`
@@ -46,6 +48,7 @@ margin: 10px;
 height: 50px;
 width: 200px;
 font-size: 20px;
+cursor: pointer;
 `
 
 const UpdatePolicyButton = styled.button`
@@ -60,6 +63,7 @@ margin: 10px;
 height: 50px;
 width: 150px;
 font-size: 18px;
+cursor: pointer;
 `
 const UserDeleteButton = styled.button`
 
@@ -73,6 +77,7 @@ margin: 10px;
 height: 50px;
 width: 160px;
 font-size: 18px;
+cursor: pointer;
 `
 
 Button.Container = Container

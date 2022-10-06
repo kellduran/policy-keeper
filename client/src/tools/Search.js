@@ -1,12 +1,19 @@
 import React from "react";
 import StyledForm from "../styled-comps/FormStyles"
+import { Separator } from "../styled-comps/SeparatorSpan";
 
 function Search({ changeSearchString }) {
   
-  
+  const styles ={
+    fontFamily: 'Laila', 
+    fontWeight: 400,
+    fontSize: 28,
+  }
+
   return (
     <div className="searchbar">
-      <label htmlFor="search">Search Policies:</label>
+      <label style={ styles } htmlFor="search">Search Policies:</label>
+      <Separator />
       <StyledForm.Input
         type="text"
         id="search"
