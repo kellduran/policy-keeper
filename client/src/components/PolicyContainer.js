@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import Search from "../tools/Search";
 import PolicyList from "./PolicyList";
-import { Separator } from "../styled-comps/SeparatorSpan";
+import StyledSpan from "../styled-comps/SeparatorSpan";
 import StyledH1 from "../styled-comps/TextElementStyle"
 
 
@@ -72,7 +72,7 @@ function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate, favor
         </div>
         <StyledDiv.PolicyContainerBackground>
             <StyledH1>Policies Page:</StyledH1>
-            <Separator />
+            <StyledSpan />
             <StyledH1.Style2>State Level Opioid Prescribing Policies</StyledH1.Style2>  
         </StyledDiv.PolicyContainerBackground>
         <StyledDiv.PolicyBackground>

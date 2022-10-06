@@ -1,6 +1,7 @@
 import React from "react";
 import StyledForm from "../styled-comps/FormStyles"
-import { Separator } from "../styled-comps/SeparatorSpan";
+import StyledSpan from "../styled-comps/SeparatorSpan";
+import StyledDiv from "../styled-comps/BackgroundStyle"
 
 function Search({ changeSearchString }) {
   
@@ -11,16 +12,16 @@ function Search({ changeSearchString }) {
   }
 
   return (
-    <div className="searchbar">
+    <StyledDiv className="searchbar">
       <label style={ styles } htmlFor="search">Search Policies:</label>
-      <Separator />
+      <StyledSpan />
       <StyledForm.Input
         type="text"
         id="search"
         placeholder="Type to search..."
         onChange={(e) => changeSearchString( e.target.value )}
       />
-    </div>
+    </StyledDiv>
   );
 }
 

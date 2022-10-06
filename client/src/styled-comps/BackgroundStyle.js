@@ -9,6 +9,13 @@ const BackgroundStyle = styled.div`
     justify-content: center;
     background-color: ${theme.bone};
 `
+const HomeContainer = styled.div`
+    position: relative;
+    top: 120px;
+    align-items: center;
+    justify-content: center;
+    background-color: ${theme.bone};
+`
 const UserBackground = styled.div`
 text-align: center;
 display: flex; 
@@ -39,4 +46,5 @@ BackgroundStyle.UserBackground = UserBackground
 BackgroundStyle.PolicyBackground = PolicyBackground
 BackgroundStyle.PolicyCardBackground = PolicyCardBackground
 BackgroundStyle.PolicyContainerBackground = PolicyContainerBackground
+BackgroundStyle.HomeContainer = HomeContainer
 export default BackgroundStyle

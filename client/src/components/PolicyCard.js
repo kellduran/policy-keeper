@@ -1,7 +1,7 @@
 import React from "react";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle"
-import { Separator } from "../styled-comps/SeparatorSpan";
+
 
 function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
 
