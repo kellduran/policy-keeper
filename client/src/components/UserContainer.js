@@ -6,6 +6,7 @@ import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import theme from "../styled-comps/theme";
 import StyledSpan from "../styled-comps/SeparatorSpan";
+import StyledH1 from "../styled-comps/TextElementStyle"
 
 
 
@@ -34,27 +35,28 @@ function UserContainer ({ currentUser, favoritePolicies, setFavoritePolicies }){
     return (
         <>
         <div>
-        <h1 style={{color: theme.bone }}>My Page</h1>
+        <StyledH1.Style3 style={{color: theme.bone }}>My Page</StyledH1.Style3>
          {/* <NavButton path="/logout" text="Logout" /> */}
          <NavButton path="/" text="Home" />
          <NavButton path="/policy" text="Policies" />
          </div>
-        <StyledDiv.UserBackground>
+        <StyledDiv.UserMyPageBackground>
+            <div>
+            <StyledH1.Style4>Username: {currentUser.user_name} </StyledH1.Style4>
+            </div>
             <StyledSpan />
-            <h2>Username: {currentUser.user_name} </h2>
-            <StyledSpan />
-            <h2>Email: {currentUser.user_email} </h2>
+            <StyledH1.Style4>Email: {currentUser.user_email} </StyledH1.Style4>
             <StyledSpan />
             <br/>
             <Link to={`/user/${id}`}>
-            <StyledButton.UpdatePolicyButton>Update My Information</ StyledButton.UpdatePolicyButton>
+            <StyledButton.UpdateUserButton>Update My Information</ StyledButton.UpdateUserButton>
             </Link>
             <Link to={"/done"}>
             <StyledButton.UserDeleteButton>Delete My Account</ StyledButton.UserDeleteButton>
             </Link>
-        </StyledDiv.UserBackground>
+        </StyledDiv.UserMyPageBackground>
         <StyledDiv>
-         <h2> My Policies </h2>   
+         <StyledH1.Style4> My Saved Policies </StyledH1.Style4>   
          </StyledDiv>
         {displayFavoritePolicies}
        
