@@ -4,6 +4,8 @@ import { NavButton } from "../tools/hooks";
 import theme from "../styled-comps/theme";
 import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
+import StyledForm from "../styled-comps/FormStyles"
+import StyledH1 from "../styled-comps/TextElementStyle"
 
 
 
@@ -60,47 +62,52 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
   
   return (
     <>
-      <StyledDiv.UserBackground>
-        <h2 style={{color: theme.bone }}>Please Sign Up!</h2>
+      <StyledDiv.UserSignUpBackground>
+        <div>
+        <StyledH1.Style3 style={{color: theme.bone }}>Please Sign Up!</StyledH1.Style3>
+        </div>
         <br/>
-        <form onSubmit={handleSubmit}>
-          <label style={ { color: theme.bone } }htmlFor="username">Username:</label>
-          <input
+        <StyledForm onSubmit={handleSubmit}>
+          <label style={ { fontFamily: "Laila",color: theme.bone } }htmlFor="username">Username:</label>
+          <StyledForm.InputSignUp
             id="username-signup-input"
             type="text"
             name="user_name"
             value={formData.user_name}
             onChange={handleChange}
           />
-          <label style={ { color: theme.bone } } htmlFor="email">Email:</label>
-          <input
+          <label style={ { fontFamily: "Laila",color: theme.bone } } htmlFor="email">Email:</label>
+          <StyledForm.InputSignUp
             id="email-signup-input"
             type="text"
             name="user_email"
             value={formData.user_email}
             onChange={handleChange}
           />
-          <label style={ { color: theme.bone } }htmlFor="password">Password:</label>
-          <input
+          <label style={ { fontFamily: "Laila",color: theme.bone } }htmlFor="password">Password:</label>
+          <StyledForm.InputSignUp
             id="password-signup-input"
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
           />
-          <label style={ { color: theme.bone } }htmlFor="confirm-password">Confirm   Password:</ label>
-          <input
+          <label style={ { fontFamily: "Laila",color: theme.bone } }htmlFor="confirm-password">Confirm   Password:</ label>
+          <StyledForm.InputSignUp
             id="confirm-password-signup-input"
             type="password"
             name="confirm-password"
           />
+          <div>
           <StyledButton type="submit">Submit</StyledButton>
-        </form>
-        
+          </div>
+        </StyledForm>
+        <div>
         <NavButton path="/" text="Home" />
         { errors ? errors.map( (error) => <div>{ error }</div> ) : null }
         { welcome ? <div>Welcome! Please click on the confirmation token in your email before attempting to login.</div>  : null }
-      </StyledDiv.UserBackground>
+        </div>
+      </StyledDiv.UserSignUpBackground>
       
     </>
   );

@@ -1,5 +1,7 @@
 import React from "react";
 import StyledButton from "../styled-comps/StyledButton";
+import StyledDiv from "../styled-comps/BackgroundStyle"
+
 
 function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
 
@@ -18,7 +20,7 @@ function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
 
   return(
     <>
-      <div  key={policy.id}>
+      <StyledDiv.PolicyCardBackground  key={policy.id}>
         <h2>State: {policy.state}</h2>
         <h2>Law Citation: {policy.law_citation} </h2>
         <h2>Title: {policy.title} </h2>
@@ -30,7 +32,7 @@ function PolicyCard({ policy, handleClickCreate, favoritePolicies }){
         <h2>Source: {policy.source} </h2>
         <StyledButton onClick={handleClick}>Keep!</StyledButton> 
         <br/>
-      </div>
+      </StyledDiv.PolicyCardBackground>
     </>
   )
 }

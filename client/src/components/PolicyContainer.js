@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import Search from "../tools/Search";
 import PolicyList from "./PolicyList";
+import StyledSpan from "../styled-comps/SeparatorSpan";
+import StyledH1 from "../styled-comps/TextElementStyle"
+
+
+
 
 function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate, favoritePolicies, errors }){
   // console.log(currentUser)
@@ -65,10 +70,11 @@ function PolicyContainer({ currentUser, setCurrentUser, handleClickCreate, favor
         <NavButton path="/" text="Home" />
         <NavButton path="/user" text="My Page" />
         </div>
-        <StyledDiv.UserBackground>
-            <h1>Policies Page</h1>
-            <h2>State Level Opioid Prescribing Policies</h2>  
-        </StyledDiv.UserBackground>
+        <StyledDiv.PolicyContainerBackground>
+            <StyledH1>Policies Page:</StyledH1>
+            <StyledSpan />
+            <StyledH1.Style2>State Level Opioid Prescribing Policies</StyledH1.Style2>  
+        </StyledDiv.PolicyContainerBackground>
         <StyledDiv.PolicyBackground>
             <Search changeSearchString={ changeSearchString }/>
             <PolicyList filteredPolicies={ filteredPolices } currentUser= { currentUser } handleClickCreate={ handleClickCreate } favoritePolicies={ favoritePolicies } errors={ errors } />
