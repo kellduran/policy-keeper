@@ -6,6 +6,7 @@ import StyledButton from "../styled-comps/StyledButton";
 import StyledDiv from "../styled-comps/BackgroundStyle";
 import StyledForm from "../styled-comps/FormStyles"
 import StyledH1 from "../styled-comps/TextElementStyle"
+import StyledSpan from "../styled-comps/SeparatorSpan"
 
 
 
@@ -63,9 +64,9 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
   return (
     <>
       <StyledDiv.UserSignUpBackground>
-        <div>
+        <StyledDiv.UserSignUpInsideBackground >
         <StyledH1.Style3 style={{color: theme.bone }}>Please Sign Up!</StyledH1.Style3>
-        </div>
+        </StyledDiv.UserSignUpInsideBackground>
         <br/>
         <StyledForm onSubmit={handleSubmit}>
           <label style={ { fontFamily: "Laila",color: theme.bone } }htmlFor="username">Username:</label>
@@ -103,10 +104,14 @@ const SignupForm = ({ currentUser, setCurrentUser }) => {
           </div>
         </StyledForm>
         <div>
-        <NavButton path="/" text="Home" />
-        { errors ? errors.map( (error) => <div>{ error }</div> ) : null }
-        { welcome ? <div>Welcome! Please click on the confirmation token in your email before attempting to login.</div>  : null }
+        { errors ? errors.map( (error) => <StyledDiv.UserSignUpErrorBackground>{ error }</StyledDiv.UserSignUpErrorBackground> ) : null }
+        { welcome ? <StyledDiv.UserSignUpWelcomeBackground>Welcome! Please click on the confirmation token in your email before attempting to login.</StyledDiv.UserSignUpWelcomeBackground>  : null }
         </div>
+        <StyledDiv.UserSignUpNavBackground>
+        <NavButton path="/" text="Home" />
+        <StyledSpan />
+        <NavButton path="/login" text="Login" />
+        </StyledDiv.UserSignUpNavBackground>
       </StyledDiv.UserSignUpBackground>
       
     </>

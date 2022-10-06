@@ -28,6 +28,10 @@ display: flex;
 align-items: left;
 background-color: ${theme.berry};
 `
+const UserSignUpInsideBackground = styled.div`
+border-radius: 3px;
+background-color: ${theme.berry};
+`
 const UserSignUpBackground = styled.div`
 text-align: center;
 display: flex; 
@@ -42,7 +46,10 @@ padding-left: 0px;
 padding-right: 0px;
 padding-top: 20px;
 padding-bottom: 75px;
-border-radius: 10px;
+-webkit-border-radius: 12px;
+-moz-border-radius: 15px;
+border-radius: 12px;
+border: 6px solid ${theme.bone};
 `
 const UserSignInBackground = styled.div`
 text-align: center;
@@ -57,10 +64,32 @@ top: 5%;
 padding-left: 0px;
 padding-right: 0px;
 padding-top: 20px;
-padding-bottom: 200px;
-border-radius: 10px;
+padding-bottom: 170px;
+border-radius: 12px;
+-webkit-border-radius: 12px;
+-moz-border-radius: 15px;
+border: 6px solid ${theme.bone};
 `
-const UserSignInErrorNavBackground = styled.div`
+const UserUpdateBackground = styled.div`
+text-align: center;
+display: flex; 
+flex-direction: column;
+width: 600px;
+align-items: left;
+background-color: ${theme.berry};
+position: absolute;
+left: 30%;
+top: 20%;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 50px;
+padding-bottom: 120px;
+border-radius: 12px;
+-webkit-border-radius: 12px;
+-moz-border-radius: 15px;
+border: 6px solid ${theme.bone};
+`
+const UserSignInNavBackground = styled.div`
 text-align: center;
 display: flex; 
 width: 450px;
@@ -68,10 +97,112 @@ align-items: left;
 background-color: ${theme.berry};
 position: relative;
 left: 20%;
-top: 80px;
+top: 60px;
 padding-left: 0px;
 padding-right: 0px;
 padding-top: 20px;
+padding-bottom: 0px;
+border-radius: 10px;
+`
+const UserUpdateNavBackground = styled.div`
+text-align: center;
+display: flex; 
+width: 350px;
+align-items: left;
+background-color: ${theme.berry};
+position: relative;
+left: 33%;
+top: 30px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 20px;
+padding-bottom: 0px;
+border-radius: 10px;
+`
+
+const UserSignInErrorBackground = styled.div`
+font-weight: 700;
+font-size: 30px;
+text-align: left;
+display: flex; 
+flex-direction: column;
+width: 400px;
+align-items: center;
+justify-content: center;
+background-color: ${theme.berry};
+position: relative;
+left: 25%;
+top: 20px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+padding-bottom: 5px;
+border-radius: 0px;
+`
+const UserSignUpNavBackground = styled.div`
+text-align: center;
+display: flex; 
+width: 300px;
+align-items: center;
+background-color: ${theme.berry};
+position: relative;
+left: 30%;
+top: 30px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 20px;
+padding-bottom: 0px;
+border-radius: 10px;
+`
+
+const UserSignUpErrorBackground = styled.div`
+font-weight: 700;
+font-size: 30px;
+text-align: center;
+display: flex; 
+width: 400px;
+align-items: left;
+background-color: ${theme.berry};
+position: relative;
+left: 22%;
+top: 30px;
+padding-left: 10px;
+padding-right: 5px;
+padding-top: 0px;
+padding-bottom: 0px;
+border-radius: 10px;
+`
+const UserUpdateErrorBackground = styled.div`
+font-weight: 700;
+font-size: 30px;
+text-align: center;
+display: flex; 
+width: 400px;
+align-items: left;
+background-color: ${theme.berry};
+position: relative;
+left: 22%;
+top: 20px;
+padding-left: 10px;
+padding-right: 5px;
+padding-top: 0px;
+padding-bottom: 0px;
+border-radius: 10px;
+`
+const UserSignUpWelcomeBackground = styled.div`
+font-weight: 700;
+font-size: 30px;
+text-align: center;
+display: flex; 
+width: 400px;
+align-items: left;
+background-color: ${theme.berry};
+position: relative;
+left: 22%;
+top: 30px;
+padding-left: 10px;
+padding-right: 5px;
+padding-top: 0px;
 padding-bottom: 0px;
 border-radius: 10px;
 `
@@ -95,13 +226,47 @@ border-top: 2px solid black;
       background-color: ${theme.hover};
     }
 `
+//User Page Related 
+
 BackgroundStyle.UserBackground = UserBackground
+
 BackgroundStyle.UserMyPageBackground = UserMyPageBackground
+
+BackgroundStyle.UserUpdateBackground = UserUpdateBackground
+
+BackgroundStyle.UserUpdateNavBackground = UserUpdateNavBackground
+
+BackgroundStyle.UserUpdateErrorBackground = UserUpdateErrorBackground
+
+//SignUp Page
+
 BackgroundStyle.UserSignUpBackground = UserSignUpBackground
+
+BackgroundStyle.UserSignUpInsideBackground = UserSignUpInsideBackground
+
+BackgroundStyle.UserSignUpNavBackground = UserSignUpNavBackground
+
+BackgroundStyle.UserSignUpErrorBackground = UserSignUpErrorBackground
+
+BackgroundStyle.UserSignUpWelcomeBackground = UserSignUpWelcomeBackground
+
+//Login Page
 BackgroundStyle.UserSignInBackground = UserSignInBackground
-BackgroundStyle.UserSignInErrorNavBackground = UserSignInErrorNavBackground
+
+BackgroundStyle.UserSignInNavBackground = UserSignInNavBackground
+
+BackgroundStyle.UserSignInErrorBackground = UserSignInErrorBackground
+
+//Policy Related 
 BackgroundStyle.PolicyBackground = PolicyBackground
+
 BackgroundStyle.PolicyCardBackground = PolicyCardBackground
+
 BackgroundStyle.PolicyContainerBackground = PolicyContainerBackground
+
+//Misc.
 BackgroundStyle.HomeContainer = HomeContainer
+
+
+
 export default BackgroundStyle

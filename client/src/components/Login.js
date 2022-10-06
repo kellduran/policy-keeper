@@ -91,14 +91,16 @@ function Login({ setCurrentUser, currentUser, setFavoritePolicies }){
         <StyledButton type="submit">Submit</StyledButton>
         </div>
       </StyledForm>
-      <StyledDiv.UserSignInErrorNavBackground>
-      { errors && <div>{errors}</div> } 
+      <div>
+      { errors && <StyledDiv.UserSignInErrorBackground>{errors}</StyledDiv.UserSignInErrorBackground> } 
+      </div>
+      <StyledDiv.UserSignInNavBackground>
       <NavButton path="/" text="Home" />
       <StyledSpan.Medium />
       <NavButton path="/user" text="My Page" />
       <StyledSpan.Medium />
       <NavButton path="/policy" text="Policies" />
-      </StyledDiv.UserSignInErrorNavBackground>
+      </StyledDiv.UserSignInNavBackground>
     </StyledDiv.UserSignInBackground>
 
         

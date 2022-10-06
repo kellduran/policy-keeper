@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import theme from "../styled-comps/theme";
 import StyledButton from "../styled-comps/StyledButton"
 import StyledDiv from "../styled-comps/BackgroundStyle"
+import StyledForm from "../styled-comps/FormStyles"
 
 function UpdateUser({ currentUser, setCurrentUser }){
     const [formData, setFormData] = useState({
@@ -53,23 +54,29 @@ function UpdateUser({ currentUser, setCurrentUser }){
     
     return(
         <>
-        <StyledDiv.UserBackground>
-            <form onSubmit={ handleSubmit }>
-                <label style={ { color: theme.bone } }htmlFor="username">Update Username: </   label>
-                <input
+        <StyledDiv.UserUpdateBackground>
+            <StyledForm onSubmit={ handleSubmit }>
+                <label style={ { fontFamily: "Laila", color: theme.bone } }htmlFor="username">Update Username: </   label>
+                <StyledForm.InputUpdateUser
                   id="username-signup-input"
                   type="text"
                   name="user_name"
                   value={ formData.user_name }
                   onChange={ handleChange }
                 />
+                <div>
                 <StyledButton>Update</StyledButton>
-            </form>
+                </div>
+            </StyledForm>
+            <div>
+            { errors ? errors.map( (error) => <StyledDiv.UserUpdateErrorBackground>{ error }</StyledDiv.UserUpdateErrorBackground> ) : null }
+            </div>
+            <StyledDiv.UserUpdateNavBackground>
             <Link to={'/user'}>
-                <StyledButton>I've Changed My Mind</StyledButton>
+                <StyledButton.ChangedMindButton>I've Changed My Mind</StyledButton.ChangedMindButton>
             </Link>
-            { errors ? errors.map( (error) => <div>{ error }</div> ) : null }
-        </StyledDiv.UserBackground>
+            </StyledDiv.UserUpdateNavBackground>
+        </StyledDiv.UserUpdateBackground>
         </>
     )
 }

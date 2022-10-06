@@ -43,6 +43,18 @@ position: 10px;
 border-radius: 5px;
 /* display: block; */
 `
+const InputUpdateUser = styled.input`
+
+font-family: 'Laila', sans-serif;
+padding: 5px 5px;
+width: 100%;
+margin: 5px 5px;
+height: 17px;
+border: 3px, ${theme.berry};
+position: 10px;
+border-radius: 5px;
+/* display: block; */
+`
 const Label = styled.input`
 
 font-family: 'News Cycle', sans-serif;
@@ -65,6 +77,7 @@ margin: 5px 0px; */
 
 Form.Input = Input
 Form.InputSignUp = InputSignUp
+Form.InputUpdateUser = InputUpdateUser
 Form.LabelSignUp = LabelSignUp
 Form.Label = Label
 

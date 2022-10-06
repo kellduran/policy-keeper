@@ -68,6 +68,23 @@ padding-top: 10px;
 padding-bottom: 55px;
 cursor: pointer;
 `
+const ChangedMindButton = styled.button`
+
+font-family: 'Overlock', cursive;
+background-color: ${theme.sea};
+color: black;
+border: none;
+border-radius: 5px;
+margin: 10px;
+height: 50px;
+width: 200px;
+font-size: 18px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 10px;
+padding-bottom: 50px;
+cursor: pointer;
+`
 const UserDeleteButton = styled.button`
 font-family: 'Overlock', cursive;
 background-color: ${theme.sea};
@@ -89,6 +106,7 @@ Button.Container = Container
 Button.DeleteButton = DeleteButton
 Button.RemovePolicyButton = RemovePolicyButton
 Button.UpdateUserButton = UpdateUserButton
+Button.ChangedMindButton = ChangedMindButton
 Button.UserDeleteButton = UserDeleteButton
 
 export default Button

@@ -2,6 +2,7 @@
 
 body {
   background-color:rgb(47, 48, 97);
+  background: -webkit-radial-gradient(circle, hsla(239, 37%, 48%, 1) 0%, hsla(239, 35%, 28%, 1) 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Laila', 
     sans-serif; 
