@@ -9,6 +9,26 @@ const BackgroundStyle = styled.div`
     justify-content: center;
     background-color: ${theme.bone};
 `
+const DeleteUserBackground = styled.div`
+   text-align: center;
+display: flex; 
+flex-direction: column;
+width: 700px;
+align-items: left;
+background-color: ${theme.bone};
+position: absolute;
+left: 30%;
+top: 20%;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 20px;
+padding-bottom: 75px;
+-webkit-border-radius: 12px;
+-moz-border-radius: 15px;
+border-radius: 20px;
+border: 10px solid ${theme.sea}; 
+    
+`
 const HomeContainer = styled.div`
     position: relative;
     top: 120px;
@@ -154,6 +174,21 @@ padding-top: 20px;
 padding-bottom: 0px;
 border-radius: 10px;
 `
+const UserDeleteChangedMindBackground = styled.div`
+text-align: center;
+display: flex; 
+width: 300px;
+align-items: center;
+background-color: ${theme.bone};
+position: relative;
+left: 35%;
+top: 30px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 20px;
+padding-bottom: 0px;
+border-radius: 10px;
+`
 
 const UserSignUpErrorBackground = styled.div`
 font-weight: 700;
@@ -230,6 +265,8 @@ border-top: 2px solid black;
 
 BackgroundStyle.UserBackground = UserBackground
 
+BackgroundStyle.DeleteUserBackground = DeleteUserBackground
+
 BackgroundStyle.UserMyPageBackground = UserMyPageBackground
 
 BackgroundStyle.UserUpdateBackground = UserUpdateBackground
@@ -237,6 +274,8 @@ BackgroundStyle.UserUpdateBackground = UserUpdateBackground
 BackgroundStyle.UserUpdateNavBackground = UserUpdateNavBackground
 
 BackgroundStyle.UserUpdateErrorBackground = UserUpdateErrorBackground
+
+BackgroundStyle.UserDeleteChangedMindBackground = UserDeleteChangedMindBackground
 
 //SignUp Page
 

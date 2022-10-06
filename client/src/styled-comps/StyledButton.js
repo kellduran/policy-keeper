@@ -3,7 +3,7 @@ import theme from "./theme"
 
 const Button = styled.button`
 
-font-family: 'Overlock', cursive;
+font-family: 'Overlock';
 background-color: ${theme.sea};
 color: black;
 border: none;
@@ -25,14 +25,20 @@ const Container = styled.div`
 
 `
 const DeleteButton = styled.button`
-
+font-weight: 500;
 font-family: bold;
 background-color: ${theme.danger};
 color: black;
 border: none;
-padding: 5px 5px;
-border-radius: 4px;
-margin: 5px;
+border-radius: 5px;
+margin: 10px;
+height: 50px;
+width: 150px;
+font-size: 24px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 20px;
+padding-bottom: 55px;
 cursor: pointer;
 `
 
@@ -76,13 +82,13 @@ color: black;
 border: none;
 border-radius: 5px;
 margin: 10px;
-height: 50px;
+height: 60px;
 width: 200px;
 font-size: 18px;
 padding-left: 10px;
 padding-right: 10px;
 padding-top: 10px;
-padding-bottom: 50px;
+padding-bottom: 60px;
 cursor: pointer;
 `
 const UserDeleteButton = styled.button`

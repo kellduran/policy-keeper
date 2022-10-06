@@ -12,6 +12,7 @@ margin-left: 20px;
 margin-right: 20px;
 `;
 
+
 Separator.Medium =  Medium
 
 export default Separator;
